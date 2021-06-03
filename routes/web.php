@@ -22,8 +22,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('{slug?}', 'App\Http\Controllers\PageController@index');
+// Route::get('/', 'App\Http\Controllers\PageController@index');
 
-Route::view('/', 'welcome')->name('home');
+// Route::view('/', 'welcome')->name('home');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
