@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Livewire\Admin\Dashboard;
-use App\Http\Livewire\Admin\Appointments;
+use App\Http\Livewire\Admin\Appointments as AdminAppointments;
+use App\Http\Livewire\Appointments;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Livewire\Auth\Login;
@@ -22,8 +23,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('{slug?}', 'App\Http\Controllers\PageController@index');
-// Route::get('/', 'App\Http\Controllers\PageController@index');
+// Route::get('{slug?}', 'App\Http\Controllers\PageController@index');
+Route::get('/', 'App\Http\Controllers\PageController@index');
+Route::get('orvosok/{slug}', [ 'as' => 'pages.doctor', 'uses' => 'App\Http\Controllers\PageController@doctor']);
+Route::get('arak', [ 'as' => 'pages.prices', 'uses' => 'App\Http\Controllers\PageController@prices']);
+Route::get('online-bejelentkezes-befejezese/{appointment}', 'App\Http\Controllers\PageController@greeting')
+    ->name('appointments.greeting');
+
+
+Route::get('online-bejelentkezes', Appointments::class)->name('appointments.index');
+// Route::get('online-bejelentkezes', [ 'as' => 'appointments.index', 'uses' => 'AppointmentsController@index']);
+// Route::post('online-bejelentkezes/uj-bejelentkezo', [ 'as' => 'appointments.store', 'uses' => 'AppointmentsController@store']);
 
 // Route::view('/', 'welcome')->name('home');
 
@@ -52,7 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::get('kezdolap', Dashboard::class)
         ->name('admin.dashboard');
 
-    Route::get('idopontok', Appointments::class)
+    Route::get('idopontok', AdminAppointments::class)
         ->name('admin.appointments');
 });
 

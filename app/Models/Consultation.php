@@ -34,4 +34,19 @@ class Consultation extends Model
     {
         return $query->where('day', '>', now());
     }
+
+    //Accessors
+    public function getNameAttribute()
+    {
+        $day = \Carbon\Carbon::parse($this->day)->locale('hu')->isoFormat('dddd');
+
+        return $this->day . ' (' . ucfirst($day) .')' . ": " . $this->open . ' - ' .$this->close . ' | Rendelő: ' . $this->office->name;
+    }
+
+    public function getNameWithoutTimeAttribute()
+    {
+        $day = \Carbon\Carbon::parse($this->day)->locale('hu')->isoFormat('dddd');
+
+        return $this->day . ' (' . ucfirst($day) .') ' . $this->office->name;
+    }
 }

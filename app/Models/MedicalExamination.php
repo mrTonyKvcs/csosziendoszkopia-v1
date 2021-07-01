@@ -20,4 +20,5 @@ class MedicalExamination extends Model
     {
         $query->where('is_active', 1);
     }
+
 }

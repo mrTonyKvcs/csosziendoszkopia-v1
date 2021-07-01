@@ -15,6 +15,7 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
+            $table->string('locale', 2)->default('hu');
             $table->string('slug')->unique();
             $table->string('name');
             $table->string('url')->unique();
