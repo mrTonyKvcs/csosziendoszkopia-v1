@@ -99,7 +99,7 @@
                         <nav class="px-2">
                             <div class="space-y-1">
                                 <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:text-gray-900 hover:bg-gray-50" -->
-                                <a href="{{ route('admin.dashboard') }}" class="flex items-center px-2 py-2 text-base font-medium text-gray-900 bg-gray-100 group leading-5 rounded-md" aria-current="page">
+                                <a href="{{ route('home') }}" class="flex items-center px-2 py-2 text-base font-medium text-gray-900 bg-gray-100 group leading-5 rounded-md" aria-current="page">
                                     <!--
                                         Heroicon name: outline/home
 
@@ -237,7 +237,7 @@
                         <nav class="px-3 mt-6">
                             <div class="space-y-1">
                                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
-                                <a href="{{ route('admin.dashboard') }}" class="flex items-center px-2 py-2 text-sm font-medium text-gray-900 bg-gray-200 group rounded-md" aria-current="page">
+                                <a href="{{ route('home') }}" class="flex items-center px-2 py-2 text-sm font-medium text-gray-900 bg-gray-200 group rounded-md" aria-current="page">
                                     <!--
                                         Heroicon name: outline/home
 

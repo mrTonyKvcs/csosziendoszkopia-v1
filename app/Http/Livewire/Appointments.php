@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Http\Traits\AppointmentTrait;
 use App\Http\Traits\ApplicantTrait;
 use App\Http\Traits\MailTrait;
+use App\Models\Applicant;
 use App\Rules\CheckSocialSecurityNumber;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
@@ -39,12 +40,7 @@ class Appointments extends Component
         'name' => 'required|min:6',
         'email' => 'required|email',
         'phone' => 'required|min:12',
-        // 'socialSecurityNumber' => 'required',
-        // 'socialSecurityNumber' => [
-        //     // 'required',
-        //     // 'numeric',
-        //     new CheckSocialSecurityNumber()
-        // ],
+        'socialSecurityNumber' => 'required|numeric',
         'zip' => 'required|numeric',
         'city' => 'required',
         'street' => 'required'
@@ -64,6 +60,12 @@ class Appointments extends Component
     public function save()
     {
         $this->validate();
+
+        $isBlackListed = $this->checkSocialSecurityNumber($this->socialSecurityNumber);
+
+        if ($isBlackListed) {
+            return $this->addError('socialSecurityNumber', 'Ez a Taj-szám tiltva van a rendszerünkben!');
+        }
 
         $applicant = $this->createApplicant();
 

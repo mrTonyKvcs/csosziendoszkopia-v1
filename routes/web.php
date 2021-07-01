@@ -60,7 +60,8 @@ Route::middleware('auth')->group(function () {
         ->name('password.confirm');
 
     Route::get('kezdolap', Dashboard::class)
-        ->name('admin.dashboard');
+        ->name('home');
+        // ->name('admin.dashboard');
 
     Route::get('idopontok', AdminAppointments::class)
         ->name('admin.appointments');

@@ -7,7 +7,7 @@ use App\Models\Appointment;
 trait AppointmentTrait {
     public function createApplicant()
     {
-        return Applicant::firstOrCreate([
+        return Applicant::updateOrCreate([
             'social_security_number' => $this->socialSecurityNumber,
         ],
         [
