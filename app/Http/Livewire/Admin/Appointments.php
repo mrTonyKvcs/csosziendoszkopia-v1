@@ -11,6 +11,8 @@ class Appointments extends Component
     protected $columns = ['Vizsgálat napja', 'Ideje', 'Vizsgálat neve', 'Beteg neve'];
     protected $todayData = true;
 
+    protected $listeners = ['switchTodayData' => 'switchTodayData'];
+
     public function mount()
     {
         $this->appointments = $this->getTodayAppointments();
@@ -28,7 +30,7 @@ class Appointments extends Component
 
     public function switchTodayData()
     {
-        $this->todayData = !$this->todayData;
+        $this->todayData = $this->todayData ? false : true;
         $this->appointments =  null;
 
         if ($this->todayData) {

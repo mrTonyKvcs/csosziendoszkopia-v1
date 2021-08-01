@@ -6,6 +6,7 @@ use App\Models\Consultation;
 use Illuminate\Support\Facades\DB;
 use App\Models\MedicalExamination;
 use App\Models\Applicant;
+use App\Models\Appointment;
 
 trait ApplicantTrait 
 {
@@ -129,5 +130,17 @@ trait ApplicantTrait
 
         $this->appointments = $appointments;
         $this->submitButton = true;
+    }
+
+    public function blocked($id)
+    {
+        $applicant = Applicant::find($id);
+        $applicant->update(['is_black_listed' => true]);
+    }
+
+    public function unBlocked($id)
+    {
+        $applicant = Applicant::find($id);
+        $applicant->update(['is_black_listed' => false]);
     }
 }

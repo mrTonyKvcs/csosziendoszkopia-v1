@@ -13,7 +13,7 @@ trait MailTrait {
 
         Mail::send('emails.new-applicant', $applicant->toArray(), function($message) use ($appointment) {
             $message->to([$appointment->consultation->user->email])
-                    ->subject('Új online bejelentkezes');
+                    ->subject('Új online bejelentkezes: ' .  $appointment->applicant->social_security_number);
         });
 
         Mail::send('emails.info', $applicant->toArray(), function($message) use ($appointment) {

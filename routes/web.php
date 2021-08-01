@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Livewire\Admin\Consultations\Index as ConsultationsIndex;
+use App\Http\Livewire\Admin\Consultations\Show as ConsultationsShow;
 use App\Http\Livewire\Admin\Appointments as AdminAppointments;
 use App\Http\Livewire\Appointments;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Livewire\Admin\Applicant\Index as ApplicantIndex;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
@@ -41,8 +44,8 @@ Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
         ->name('login');
 
-    Route::get('register', Register::class)
-        ->name('register');
+    // Route::get('register', Register::class)
+    //     ->name('register');
 });
 
 Route::get('password/reset', Email::class)
@@ -51,20 +54,27 @@ Route::get('password/reset', Email::class)
 Route::get('password/reset/{token}', Reset::class)
     ->name('password.reset');
 
-Route::middleware('auth')->group(function () {
-    Route::get('email/verify', Verify::class)
-        ->middleware('throttle:6,1')
-        ->name('verification.notice');
+Route::get('email/verify', Verify::class)
+    ->middleware('throttle:6,1')
+    ->name('verification.notice');
 
-    Route::get('password/confirm', Confirm::class)
-        ->name('password.confirm');
+Route::get('password/confirm', Confirm::class)
+    ->name('password.confirm');
 
-    Route::get('kezdolap', Dashboard::class)
+Route::prefix('admin')->middleware('auth')->group(function () {
+
+    Route::get('/dashboard', Dashboard::class)
         ->name('home');
         // ->name('admin.dashboard');
 
-    Route::get('idopontok', AdminAppointments::class)
-        ->name('admin.appointments');
+    Route::get('rendelesek', ConsultationsIndex::class)
+        ->name('admin.consultations.index');
+
+    Route::get('rendelesek/{consultation}', ConsultationsShow::class)
+        ->name('admin.consultations.show');
+
+    Route::get('paciensek', ApplicantIndex::class)
+        ->name('admin.applicant.index');
 });
 
 Route::middleware('auth')->group(function () {

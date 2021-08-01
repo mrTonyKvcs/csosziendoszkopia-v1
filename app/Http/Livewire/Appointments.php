@@ -82,5 +82,4 @@ class Appointments extends Component
     {
         $this->submitButton != $this->submitButton;
     }
-
 }

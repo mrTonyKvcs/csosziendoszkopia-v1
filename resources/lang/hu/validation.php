@@ -156,7 +156,12 @@ return [
         'socialSecurityNumber' => 'Taj-szám',
         'zip' => 'Irányítószám',
         'city' => 'Város',
-        'street' => 'Utca, házszám'
+        'street' => 'Utca, házszám',
+        'newConsultation.user_id' => 'Orvos',
+        'newConsultation.office_id' => 'Rendelő',
+        'newConsultation.day' => 'Rendelési nap',
+        'newConsultation.open' => 'Rendelési kezdete',
+        'newConsultation.close' => 'Rendelési vége',
     ],
 
 ];

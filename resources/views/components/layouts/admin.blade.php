@@ -71,7 +71,7 @@
                     From: "translate-x-0"
                     To: "-translate-x-full"
                 -->
-                <div class="relative flex flex-col flex-1 w-full max-w-xs pt-5 pb-4 bg-white">
+                <div class="relative flex flex-col flex-1 w-full max-w-xs pb-4 bg-white">
                     <!--
                         Close button, show/hide based on off-canvas menu state.
 
@@ -92,14 +92,14 @@
                         </button>
                     </div>
 
-                    <div class="flex items-center flex-shrink-0 px-4">
-                        <img class="w-auto h-8" src="https://tailwindui.com/img/logos/workflow-logo-purple-500-mark-gray-700-text.svg" alt="Workflow">
+                    <div class="flex items-center flex-shrink-0 px-8 py-6 uppercase bg-blue-500">
+                        <img src="/img/logos/logo-blue.png" alt="">
                     </div>
                     <div class="flex-1 h-0 mt-5 overflow-y-auto">
                         <nav class="px-2">
                             <div class="space-y-1">
                                 <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:text-gray-900 hover:bg-gray-50" -->
-                                <a href="{{ route('home') }}" class="flex items-center px-2 py-2 text-base font-medium text-gray-900 bg-gray-100 group leading-5 rounded-md" aria-current="page">
+                                <a href="{{ route('home') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'dashboard' ? 'bg-blue-500 text-white' : 'text-blue-500' }} group leading-5 rounded-md uppercase font-light" aria-current="page">
                                     <!--
                                         Heroicon name: outline/home
 
@@ -119,12 +119,19 @@
                                     {{-- My tasks --}}
                                 {{-- </a> --}}
 
-                                <a href="{{ route('admin.appointments') }}" class="flex items-center px-2 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md">
+                                <a href="{{ route('admin.consultations.index') }}" class="flex items-center px-2 py-2 text-base  {{ request()->segment(2) == 'rendelesek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} hover:text-gray-200 hover:bg-gray-50 group leading-5 rounded-md uppercase font-light">
                                     <!-- Heroicon name: outline/clock -->
                                     <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    Időpontok
+                                    Rendelések
+                                </a>
+                                <a href="{{ route('admin.applicant.index') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'paciensek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-200 hover:bg-gray-50 group leading-5 rounded-md uppercase">
+                                    <!-- Heroicon name: outline/clock -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+</svg>
+                                    Páciensek
                                 </a>
                             </div>
                             {{-- <div class="mt-8"> --}}
@@ -165,9 +172,9 @@
 
             <!-- Static sidebar for desktop -->
             <div class="hidden lg:flex lg:flex-shrink-0">
-                <div class="flex flex-col w-64 pt-5 pb-4 bg-gray-100 border-r border-gray-200">
-                    <div class="flex items-center flex-shrink-0 px-6">
-                        <img class="w-auto h-8" src="https://tailwindui.com/img/logos/workflow-logo-purple-500-mark-gray-700-text.svg" alt="Workflow">
+                <div class="flex flex-col w-64 pb-4 bg-white border-r border-gray-200">
+                    <div class="flex items-center flex-shrink-0 px-8 py-6 uppercase bg-blue-500">
+                        <img src="/img/logos/logo-blue.png" alt="">
                     </div>
                     <!-- Sidebar component, swap this element with another sidebar if you like -->
                     <div class="flex flex-col flex-1 h-0 overflow-y-auto">
@@ -237,13 +244,13 @@
                         <nav class="px-3 mt-6">
                             <div class="space-y-1">
                                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
-                                <a href="{{ route('home') }}" class="flex items-center px-2 py-2 text-sm font-medium text-gray-900 bg-gray-200 group rounded-md" aria-current="page">
+                                <a href="{{ route('home') }}" class="flex items-center px-2 py-2 text-sm {{ request()->segment(2) == 'dashboard' ? 'bg-blue-500 text-white' : 'text-blue-500' }} group rounded-md uppercase font-light" aria-current="page">
                                     <!--
                                         Heroicon name: outline/home
 
                                         Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
                                     -->
-                                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true" stroke="gray">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                     </svg>
                                     Kezdőlap
@@ -256,14 +263,21 @@
                                     {{-- </svg> --}}
                                     {{-- My tasks --}}
                                 {{-- </a> --}}
-
-                                <a href="{{ route('admin.appointments') }}" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 group rounded-md">
+                            <a href="{{ route('admin.consultations.index') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'rendelesek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
                                     <!-- Heroicon name: outline/clock -->
-                                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="gray" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    Időpontok
+                                    Rendelések
                                 </a>
+                                <a href="{{ route('admin.applicant.index') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'paciensek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
+                                    <!-- Heroicon name: outline/clock -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="gray">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+</svg>
+                                    Páciensek
+                                </a>
+
                             </div>
                             {{-- <div class="mt-8"> --}}
                                 {{-- <!-- Secondary navigation --> --}}
@@ -297,8 +311,53 @@
                     </div>
                 </div>
             </div>
+            
             <!-- Main column -->
             <div class="flex flex-col flex-1 w-0 overflow-hidden">
+                <div class="relative z-10 flex flex-shrink-0 h-16 bg-white border-b border-gray-200 lg:hidden">
+                    <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
+                    <button @click="sidebar = true" class="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden">
+                        <span class="sr-only">Open sidebar</span>
+                        <!-- Heroicon name: outline/menu-alt-1 -->
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </button>
+                    <div class="flex justify-between flex-1 px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-1">
+                        </div>
+                        <div class="flex items-center">
+                            <!-- Profile dropdown -->
+                            <div class="relative ml-3">
+                                <div>
+                                    <button @click="dropdown = !dropdown" type="button" class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                        <span class="sr-only">Open user menu</span>
+                                        {{ auth()->user()->name }}
+                                    </button>
+                                </div>
+
+                                <!--
+                                    Dropdown menu, show/hide based on menu state.
+
+                                    Entering: "transition ease-out duration-100"
+                                    From: "transform opacity-0 scale-95"
+                                    To: "transform opacity-100 scale-100"
+                                    Leaving: "transition ease-in duration-75"
+                                    From: "transform opacity-100 scale-100"
+                                    To: "transform opacity-0 scale-95"
+                                -->
+                                <div x-show="dropdown === true" class="absolute right-0 w-48 mt-2 bg-white shadow-lg origin-top-right rounded-md ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                    <div class="py-1" role="none">
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="options-menu-item-5">Kijelentkezés</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {{ $slot }}
             </div>
         </div>
