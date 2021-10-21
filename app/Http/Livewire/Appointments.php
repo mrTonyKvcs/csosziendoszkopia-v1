@@ -15,6 +15,7 @@ class Appointments extends Component
 {
     use AppointmentTrait; use ApplicantTrait; use MailTrait;
 
+    public $phase = 1;
     public $name;
     public $email;
     public $phone;
@@ -73,6 +74,8 @@ class Appointments extends Component
 
         $this->sendMessages($appointment, $applicant);
 
+        return back();
+
         return redirect()->route('appointments.greeting', [
             'appointment' => $appointment
         ]);
@@ -81,5 +84,23 @@ class Appointments extends Component
     public function toggleSubmitButton()
     {
         $this->submitButton != $this->submitButton;
+    }
+
+    public function previousPhase()
+    {
+        $this->phase != 1 
+            ? $this->phase--
+            : null;
+    }
+
+    public function nextPhase()
+    {
+        if ($this->phase == 2) {
+            $this->validate();
+        }
+
+        $this->phase != 3 
+            ? $this->phase++
+            : null;
     }
 }
