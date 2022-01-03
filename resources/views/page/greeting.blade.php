@@ -1,5 +1,5 @@
-@extends('layouts.greeting')
-@section('content')
+<x-layouts.app>
+
         <section class="appointment single-page">
             <div class="container">
                 <div class="row">
@@ -7,7 +7,7 @@
                         <div class="appointment-inner">
                             <div class="title">
                                 <h3>Sikeres online fizetés és bejelentkezés!</h3>
-                                <p class="my-3" style="font-size: 22px;">Az időpontja: <span style="color: #1A76D1;">{{ $appointment->consultation->nameWithoutTime }} {{ $appointment->start_at }} - {{ $appointment->end_at}}</span></p>
+                                <p class="my-3" style="font-size: 22px;">A megadott email címre küldjük az időponttal és a vizsgálattal kapcsolatos információkat</p>
                                 <a href="/" style="font-size: 22px color: #1A76D1;">Vissza a főoldalra</a>
                             </div>
                         </div>
@@ -31,4 +31,5 @@
                 </div>
             </div>
         </section>
-@endsection
+
+</x-layouts.app>

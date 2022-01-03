@@ -74,7 +74,7 @@ class Appointments extends Component
 
         $this->sendMessages($appointment, $applicant);
 
-        return back();
+        // return back();
 
         return redirect()->route('appointments.greeting', [
             'appointment' => $appointment
