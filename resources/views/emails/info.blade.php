@@ -4,8 +4,9 @@
 <title>Page Title</title>
 </head>
 <body>
-    <h1>Sikeres online fizetés és bejelentkezés!</h1>
-    <p>Az online konzultációs időpontja: {{ $appointment }}</p>
+    <h1>Sikeres online bejelentkezés!</h1>
+    {{-- <h1>Sikeres online fizetés és bejelentkezés!</h1> --}}
+    <p>Az időpontja: {{ $appointment }}</p>
 
     @if($medicalExamination === 'gasztroszkopia')
 
