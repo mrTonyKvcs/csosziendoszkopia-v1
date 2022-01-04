@@ -175,7 +175,7 @@ use SimplePay\SimplePayStart;
 Route::get('/', 'App\Http\Controllers\PageController@index');
 Route::get('orvosok/{slug}', [ 'as' => 'pages.doctor', 'uses' => 'App\Http\Controllers\PageController@doctor']);
 Route::get('arak', [ 'as' => 'pages.prices', 'uses' => 'App\Http\Controllers\PageController@prices']);
-Route::get('online-bejelentkezes-befejezese/{appointment}', 'App\Http\Controllers\PageController@greeting')
+Route::get('online-bejelentkezes-befejezese', 'App\Http\Controllers\PageController@greeting')
     ->name('appointments.greeting');
 
 
