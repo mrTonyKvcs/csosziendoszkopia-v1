@@ -10,7 +10,7 @@ class Consultation extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'day','open', 'close', 'is_digital', 'office_id'
+        'user_id', 'day','open', 'close', 'is_digital', 'office_id', 'type_id'
     ];
 
     public function appointments()

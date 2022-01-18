@@ -10,6 +10,7 @@ trait ConsultationTrait
     {
         Consultation::updateOrCreate(
         [
+			'type_id' => $this->newConsultation['type_id'],
             'user_id' => $this->newConsultation['user_id'],
             'office_id' => $this->newConsultation['office_id'],
             'day' => $this->newConsultation['day'],
@@ -37,7 +38,8 @@ trait ConsultationTrait
             'day' => '',
             'open' => '',
             'close' => '',
-            'is_digital' => 0
+			'is_digital' => 0,
+			'type_id' => ''
         ];
     }
 }

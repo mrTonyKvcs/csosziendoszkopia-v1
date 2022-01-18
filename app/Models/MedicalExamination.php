@@ -9,7 +9,7 @@ class MedicalExamination extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['slug', 'name', 'is_active'];
+    protected $fillable = ['slug', 'name', 'is_active', 'type_id'];
 
     public function doctors()
     {

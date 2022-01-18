@@ -6,6 +6,7 @@ use App\Http\Traits\AppointmentTrait;
 use App\Http\Traits\ConsultationTrait;
 use App\Models\Office;
 use App\Models\Consultation;
+use App\Models\Type;
 use App\Models\User;
 use Livewire\Component;
 
@@ -20,13 +21,15 @@ class Index extends Component
     public $doctors;
     public $offices;
     public $data = [];
+	public $type = [];
     public $newConsultation = [
         'user_id' => '',
         'office_id' => '',
         'day' => '',
         'open' => '',
         'close' => '',
-        'is_digital' => 0
+		'is_digital' => 0,
+		'type_id' => ''
     ];
 
     protected $rules = [
@@ -35,6 +38,7 @@ class Index extends Component
         'newConsultation.day' => 'required',
         'newConsultation.open' => 'required',
         'newConsultation.close' => 'required',
+        'newConsultation.type_id' => 'required',
     ];
 
     public function mount()
@@ -46,6 +50,8 @@ class Index extends Component
             ->get();
 
         $this->data['offices'] = Office::all();
+
+		$this->data['types'] = Type::all();
     }
 
     public function render()

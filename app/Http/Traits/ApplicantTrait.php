@@ -68,7 +68,13 @@ trait ApplicantTrait
         $this->appointment = null;
         $this->appointments = [];
 
+		$type = MedicalExamination::query()
+			->where('slug', $this->medicalExamination)
+			->first()
+			->type_id;
+
         $this->consultations = Consultation::query()
+			->where('type_id', $type)
             ->where('user_id', $this->doctor)
             ->where('is_digital', $this->medicalExamination === 'on-line-konzultacio' ? 1 : 0)
             ->where('day', '>', $this->medicalExaminationId === 2 ? now() : now()->addWeek())

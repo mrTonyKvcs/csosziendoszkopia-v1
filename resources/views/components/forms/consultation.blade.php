@@ -9,6 +9,17 @@
 
     <div class="flex flex-col lg:flex-col lg:space-x-4">
         <div>
+
+            <select id="types" wire:model="newConsultation.type_id" class="block w-full p-2 py-2 pl-3 pr-10 mt-1 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg rounded-md">
+                <option selected>Rendelés típusának kiválasztása</option>
+
+                @forelse($data['types'] as $type)
+                    <option value="{{ $type['id'] }}">{{ $type['name'] }}</option>
+                @empty
+                    <p>Nem talalhato rendelesi tipus a rendszerben!</p>
+                @endforelse
+            </select>
+            @error('newConsultation.type_id') <span class="error">{{ $message }}</span> @enderror
             <select id="doctor" wire:model="newConsultation.user_id" class="block w-full p-2 py-2 pl-3 pr-10 mt-1 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg rounded-md">
                 <option selected>Orvos kiválasztása</option>
 
