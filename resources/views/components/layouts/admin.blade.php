@@ -277,7 +277,13 @@
 </svg>
                                     Páciensek
                                 </a>
-
+								<a href="{{ route('admin.appointment') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'uj-idopont' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
+									<!-- Heroicon name: outline/clock -->
+									<svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="gray">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+									</svg>
+									Új időpont
+								</a>
                             </div>
                             {{-- <div class="mt-8"> --}}
                                 {{-- <!-- Secondary navigation --> --}}

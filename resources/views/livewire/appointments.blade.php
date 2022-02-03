@@ -23,6 +23,19 @@
 				<h2 class="text-2xl font-semibold">Időpontfoglalás és fizetés</h2>
 				<p class="text-lg">Foglaljon időpontot a vizsgálatainkra!<br> Ön 5000 Ft előleg fizetésével tud időpontot foglalni on-line, mely összeg levonásra kerül a vizsgálat árából</p>
 			</div>
+			<div class="rounded-md bg-blue-50 p-4 mt-4">
+				<div class="flex">
+					<div class="flex-shrink-0">
+						<!-- Heroicon name: solid/information-circle -->
+						<svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+							<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+						</svg>
+					</div>
+					<div class="ml-3 flex-1 md:flex md:justify-between">
+						<p class="text-md text-blue-700">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+				</div>
+			</div>
 			{{-- <section x-show="status === 1" class="container my-10"> --}}
 				{{-- </section> --}}
 		</section>

@@ -77,7 +77,7 @@ trait ApplicantTrait
 			->where('type_id', $type)
             ->where('user_id', $this->doctor)
             ->where('is_digital', $this->medicalExamination === 'on-line-konzultacio' ? 1 : 0)
-            ->where('day', '>', $this->medicalExaminationId === 2 ? now() : now()->addWeek())
+            ->where('day', '>', $this->medicalExaminationId === 2 ? now()->addWeek() : now())
             ->get();
     }
 

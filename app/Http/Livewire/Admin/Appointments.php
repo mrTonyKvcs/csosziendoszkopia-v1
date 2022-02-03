@@ -2,56 +2,102 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Appointment as AppointmentModel;
+use App\Http\Traits\AppointmentTrait;
+use App\Http\Traits\ApplicantTrait;
+use App\Http\Traits\MailTrait;
+use App\Models\Applicant;
+use App\Rules\CheckSocialSecurityNumber;
 use Livewire\Component;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class Appointments extends Component
 {
-    protected $appointments;
-    protected $columns = ['Vizsgálat napja', 'Ideje', 'Vizsgálat neve', 'Beteg neve'];
-    protected $todayData = true;
+    use AppointmentTrait; use ApplicantTrait; use MailTrait;
 
-    protected $listeners = ['switchTodayData' => 'switchTodayData'];
+    public $phase = 1;
+    public $name;
+    public $email;
+    public $phone;
+    public $socialSecurityNumber;
+    public $zip;
+    public $city;
+    public $street;
+    public $status = 0;
+    public $medicalExamination;
+    public $medicalExaminations;
+    public $medicalExaminationId;
+    public $doctors = [];
+    public $doctor;
+    public $consultations = [];
+    public $consultation;
+    public $appointments = [];
+    public $appointment;
+    public $submitButton = false;
+
+    protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
+
+    protected $rules = [
+        'name' => 'required|min:6',
+        'email' => 'required|email',
+        'phone' => 'required|min:12',
+        'socialSecurityNumber' => 'required|numeric',
+        'zip' => 'required|numeric',
+        'city' => 'required',
+        'street' => 'required'
+    ];
 
     public function mount()
     {
-        $this->appointments = $this->getTodayAppointments();
+        $this->medicalExaminations = $this->getActiveMedicalExaminations();
     }
 
     public function render()
     {
-        return view('livewire.admin.appointments', [
-            'appointments' => $this->appointments,
-            'columns' => $this->columns,
-            'todayData' => $this->todayData
-        ])
-        ->layout('components.layouts.admin');
+        return view('livewire.admin.appointments')
+            ->layout('components.layouts.admin');
     }
 
-    public function switchTodayData()
+    public function save()
     {
-        $this->todayData = $this->todayData ? false : true;
-        $this->appointments =  null;
+        $this->validate();
 
-        if ($this->todayData) {
-            return $this->appointments = $this->getTodayAppointments();
+        $isBlackListed = $this->checkSocialSecurityNumber($this->socialSecurityNumber);
+
+        if ($isBlackListed) {
+            return $this->addError('socialSecurityNumber', 'Ez a Taj-szám tiltva van a rendszerünkben!');
         }
 
-        return $this->appointments = $this->getAllAppointments();
+        $applicant = $this->createApplicant();
+
+        $appointment = $this->createAppointment($applicant->id);
+
+        // $this->sendMessages($appointment, $applicant);
+
+        session()->flash('success', 'Sikeresen felvette az új időpontot!');
+		return redirect()->route('admin.appointment');
     }
 
-    protected function getTodayAppointments()
+    public function toggleSubmitButton()
     {
-        return AppointmentModel::whereHas('consultation', function($q) {
-            $q->where('day', now()->format('Y-m-d'));
-        })->get();
+        $this->submitButton != $this->submitButton;
     }
 
-    protected function getAllAppointments()
+    public function previousPhase()
     {
-        return AppointmentModel::paginate(10);
-        // return Appointment::paginate(10)->sortBy( function ($q) {
-        //     return $q->consultation->day;
-        // })->all();
+        $this->phase != 1 
+            ? $this->phase--
+            : null;
+    }
+
+    public function nextPhase()
+    {
+        if ($this->phase == 2) {
+            $this->validate();
+        }
+
+        $this->phase != 3 
+            ? $this->phase++
+            : null;
     }
 }
