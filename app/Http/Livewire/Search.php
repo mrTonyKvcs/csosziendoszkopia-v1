@@ -65,7 +65,7 @@ class Search extends Component
                 $row['applicant_name']  = $item->applicant->name;
                 $row['social_security_number']  = $item->applicant->social_security_number;
                 $row['phone'] = $item->applicant->phone;
-                $row['control']  = $this->checkControlExamination($item->id, $item->applicant->id);
+                $row['control']  = '-';
 
                 fputcsv($file, array($row['consultation'], $row['medicalExamination'], $row['start'], $row['end'], $row['applicant_name'], $row['social_security_number'], $row['phone'], $row['control']));
             }

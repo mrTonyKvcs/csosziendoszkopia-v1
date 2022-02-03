@@ -58,7 +58,7 @@ class Show extends Component
                 $row['end']  = $item->end_at;
                 $row['applicant_name']  = $item->applicant->name;
                 $row['social_security_number']  = $item->applicant->social_security_number;
-                $row['control']  = 'Nem';
+                $row['control']  = '-';
 
                 fputcsv($file, array($row['consultation'], $row['medicalExamination'], $row['start'], $row['end'], $row['applicant_name'], $row['social_security_number'], $row['control']));
             }
