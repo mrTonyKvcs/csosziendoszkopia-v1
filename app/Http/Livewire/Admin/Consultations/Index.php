@@ -14,7 +14,7 @@ class Index extends Component
 {
     use ConsultationTrait; use AppointmentTrait;
 
-    public $columns = ['Helye', 'Napja', 'Kezdés', 'Vége'];
+    public $columns = ['Orvos', 'Helye', 'Napja', 'Kezdés', 'Vége'];
     public $consultations = [];
     public $createForm = false;
     public $confirmingItemDeletion = false;

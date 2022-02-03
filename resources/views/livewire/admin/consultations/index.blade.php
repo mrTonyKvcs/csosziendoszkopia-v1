@@ -54,6 +54,15 @@
                                 <td class="px-6 py-3 text-sm font-medium text-center text-gray-900 max-w-0 whitespace-nowrap">
                                     {{ $loop->index + 1 }}
                                 </td>
+								<td class="px-6 py-3 text-sm font-medium text-center text-gray-900 max-w-0 whitespace-nowrap">
+                                    <div class="flex items-center space-x-3 lg:pl-2">
+                                        <div class="truncate">
+                                            <span>
+                                                {{ $consultation->user->name }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="px-6 py-3 text-sm font-medium text-center text-gray-900 max-w-0 whitespace-nowrap">
                                     <div class="flex items-center space-x-3 lg:pl-2">
                                         <div class="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-pink-600" aria-hidden="true"></div>
