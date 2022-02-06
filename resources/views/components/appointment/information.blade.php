@@ -1,3 +1,7 @@
+@props([
+	'admin' => false
+])
+
 <div
     class="overflow-hidden bg-white shadow sm:rounded-lg">
     <div class="px-4 py-5 sm:px-6">
@@ -14,14 +18,17 @@
                 <dt class="text-lg font-medium text-gray-500">Név</dt>
                 <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">{{ $this->name }}</dd>
             </div>
-            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-lg font-medium text-gray-500">Email cím</dt>
-                <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">{{ $this->email }}</dd>
-            </div>
+			@if(!$admin)
+				<div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+					<dt class="text-lg font-medium text-gray-500">Email cím</dt>
+					<dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">{{ $this->email }}</dd>
+				</div>
+			@endif
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-lg font-medium text-gray-500">Telefonszám</dt>
                 <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">{{ $this->phone }}</dd>
             </div>
+			@if(!$admin)
             <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-lg font-medium text-gray-500">Taj-szám</dt>
                 <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">{{ $this->socialSecurityNumber }}</dd>
@@ -38,6 +45,7 @@
                 <dt class="text-lg font-medium text-gray-500">Utca</dt>
                 <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">{{ $this->street }}</dd>
             </div>
+		@endif
         </dl>
     </div>
 </div>

@@ -17,12 +17,12 @@ class Appointments extends Component
 
     public $phase = 1;
     public $name;
-    public $email;
+    public $email = 'test@csosziendoszkopia.hu';
     public $phone;
-    public $socialSecurityNumber;
-    public $zip;
-    public $city;
-    public $street;
+    public $socialSecurityNumber = '000000000';
+    public $zip = "6000";
+    public $city = "Kecskemet";
+    public $street = 'test street';
     public $status = 0;
     public $medicalExamination;
     public $medicalExaminations;

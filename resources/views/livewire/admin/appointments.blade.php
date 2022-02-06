@@ -20,11 +20,11 @@
 							<x-appointment.select-appointment />
 						</div>
 						<div x-show="phase == 2">
-							<x-appointment.personal-info />
+							<x-appointment.personal-info :admin="true"/>
 						</div>
 						<div x-show="phase == 3">
 
-							<x-appointment.information/>
+							<x-appointment.information :admin="true" />
 								{{-- <div --}}
 									{{-- x-cloak --}}
 									{{-- x-data="{ appointment: @entangle('appointment') }" --}}

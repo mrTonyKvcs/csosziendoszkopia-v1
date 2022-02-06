@@ -12,7 +12,8 @@ trait MailTrait {
         $applicant->medicalExamination = $appointment->medicalExamination->slug;
 
         Mail::send('emails.new-applicant', $applicant->toArray(), function($message) use ($appointment) {
-            $message->to([$appointment->consultation->user->email])
+            // $message->to([$appointment->consultation->user->email])
+            $message->to('csosziendoszkopia@gmail.com')
                     ->subject('Új online bejelentkezes: ' .  $appointment->applicant->social_security_number);
         });
 

@@ -1,3 +1,7 @@
+@props([
+	'admin' => false
+])
+
 <div class="overflow-hidden bg-white shadow sm:rounded-lg">
     <div class="px-4 py-5 sm:px-6">
         <h3 class="flex items-center text-lg font-medium text-gray-900 leading-6">
@@ -14,31 +18,36 @@
                 @error('name') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-            <div class="col-span-6 sm:col-span-2">
-                <input type="text" wire:model="email" id="email_address" autocomplete="email" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Email cím">
-                @error('email') <span class="error">{{ $message }}</span> @enderror
-            </div>
+			@if(!$admin)
+				<div class="col-span-6 sm:col-span-2">
+					<input type="text" wire:model="email" id="email_address" autocomplete="email" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Email cím">
+					@error('email') <span class="error">{{ $message }}</span> @enderror
+				</div>
+			@endif
 
             <div class="col-span-6 sm:col-span-2">
                 <input type="text" name="phone" wire:model="phone" id="phone" autocomplete="email" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Telefonszám">
                 @error('phone') <span class="error">{{ $message }}</span> @enderror
             </div>
-            <div class="col-span-6 sm:col-span-2">
-                <input type="text" name="socialSecurityNumber" wire:model="socialSecurityNumber" id="social_security_number" autocomplete="social_security_number" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Taj-szám">
-                @error('socialSecurityNumber') <span class="error">{{ $message }}</span> @enderror
-            </div>
-            <div class="col-span-6 sm:col-span-2">
-                <input type="text" name="zip" wire:model="zip" id="zip" autocomplete="zip" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Irányítószám">
-                @error('zip') <span class="error">{{ $message }}</span> @enderror
-            </div>
-            <div class="col-span-6 sm:col-span-2">
-                <input type="text" name="city" wire:model="city" id="city" autocomplete="city" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Város">
-                @error('city') <span class="error">{{ $message }}</span> @enderror
-            </div>
-            <div class="col-span-6 sm:col-span-2">
-                <input type="text" name="street" wire:model="street" id="street" autocomplete="street" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Utca és házszám">
-                @error('street') <span class="error">{{ $message }}</span> @enderror
-            </div>
+
+			@if(!$admin)
+				<div class="col-span-6 sm:col-span-2">
+					<input type="text" name="socialSecurityNumber" wire:model="socialSecurityNumber" id="social_security_number" autocomplete="social_security_number" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Taj-szám">
+					@error('socialSecurityNumber') <span class="error">{{ $message }}</span> @enderror
+				</div>
+				<div class="col-span-6 sm:col-span-2">
+					<input type="text" name="zip" wire:model="zip" id="zip" autocomplete="zip" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Irányítószám">
+					@error('zip') <span class="error">{{ $message }}</span> @enderror
+				</div>
+				<div class="col-span-6 sm:col-span-2">
+					<input type="text" name="city" wire:model="city" id="city" autocomplete="city" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Város">
+					@error('city') <span class="error">{{ $message }}</span> @enderror
+				</div>
+				<div class="col-span-6 sm:col-span-2">
+					<input type="text" name="street" wire:model="street" id="street" autocomplete="street" class="block w-full p-2 mt-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm sm:text-lg rounded-md" placeholder="Utca és házszám">
+					@error('street') <span class="error">{{ $message }}</span> @enderror
+				</div>
+			@endif
         </div>
     
 </div>
