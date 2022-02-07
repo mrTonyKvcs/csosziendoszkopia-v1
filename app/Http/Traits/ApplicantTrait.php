@@ -49,8 +49,12 @@ trait ApplicantTrait
             $this->appointment = null;
             $this->appointments = [];
 
+			$slug = isset($this->medicalExamination->slug)
+				? $this->medicalExamination->slug
+				: $this->medicalExamination;	
+
             $medicalExamination = MedicalExamination::query()
-                 ->whereSlug($this->medicalExamination)
+                 ->whereSlug($slug)
                  ->first();
 
             $this->medicalExaminationId = $medicalExamination->id;
@@ -68,15 +72,23 @@ trait ApplicantTrait
         $this->appointment = null;
         $this->appointments = [];
 
+		$slug = isset($this->medicalExamination->slug)
+			? $this->medicalExamination->slug
+			: $this->medicalExamination;	
+
 		$type = MedicalExamination::query()
-			->where('slug', $this->medicalExamination)
+			->where('slug', $slug)
 			->first()
 			->type_id;
 
+		$doctorId = isset($this->doctor->id)
+			? $this->doctor->id
+			: $this->doctor;	
+
         $this->consultations = Consultation::query()
 			->where('type_id', $type)
-            ->where('user_id', $this->doctor)
-            ->where('is_digital', $this->medicalExamination === 'on-line-konzultacio' ? 1 : 0)
+            ->where('user_id', $doctorId)
+            ->where('is_digital', $slug === 'on-line-konzultacio' ? 1 : 0)
             ->where('day', '>', $this->medicalExaminationId === 2 ? now()->addWeek() : now())
             ->get();
     }
@@ -85,13 +97,26 @@ trait ApplicantTrait
     {
         $this->appointments = [];
 
-        $consultation = Consultation::find($this->consultation);
+		$consultationId = isset($this->consultation->id)
+			? $this->consultation->id
+			: $this->consultation;	
+
+        $consultation = Consultation::find($consultationId);
+
+		$slug = isset($this->medicalExamination->slug)
+			? $this->medicalExamination->slug
+			: $this->medicalExamination;	
+
         $medicalExamination = MedicalExamination::query()
-            ->whereSlug($this->medicalExamination)
+            ->whereSlug($slug)
             ->first();
 
+		$doctorId = isset($this->doctor->id)
+			? $this->doctor->id
+			: $this->doctor;	
+
         $minutes = DB::table('doctor_medical_examination')
-            ->where('user_id', $this->doctor)
+            ->where('user_id', $doctorId)
             ->where('medical_examination_id', $medicalExamination->id)
             ->first()
             ->minutes;

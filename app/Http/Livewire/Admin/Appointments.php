@@ -6,6 +6,10 @@ use App\Http\Traits\AppointmentTrait;
 use App\Http\Traits\ApplicantTrait;
 use App\Http\Traits\MailTrait;
 use App\Models\Applicant;
+use App\Models\Appointment;
+use App\Models\Consultation;
+use App\Models\MedicalExamination;
+use App\Models\User;
 use App\Rules\CheckSocialSecurityNumber;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
@@ -34,8 +38,12 @@ class Appointments extends Component
     public $appointments = [];
     public $appointment;
     public $submitButton = false;
+	public $selectMedical = false;
+	public $selectDoctor = false;
+	public $selectConsultation = false;
+	public $selectAppointment = false;
 
-    protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
+    // protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
 
     protected $rules = [
         'name' => 'required|min:6',
@@ -100,4 +108,31 @@ class Appointments extends Component
             ? $this->phase++
             : null;
     }
+
+	public function setActiveMedical($id)
+	{
+		$this->medicalExamination = MedicalExamination::find($id);
+		$this->selectMedical = false;
+		$this->getDoctors();
+	}
+
+	public function setActiveDoctor($id)
+	{
+		$this->doctor = User::find($id);
+		$this->selectDoctor = false;
+		$this->getConsultations();
+	}
+
+	public function setActiveConsultation($id)
+	{
+		$this->consultation = Consultation::find($id);
+		$this->selectConsultation = false;
+		$this->getAppointments();
+	}
+
+	public function setActiveAppointment($id)
+	{
+		$this->appointment = $this->appointments[$id];
+		$this->selectAppointment = false;
+	}
 }

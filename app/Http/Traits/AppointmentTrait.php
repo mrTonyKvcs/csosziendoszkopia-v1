@@ -23,10 +23,14 @@ trait AppointmentTrait {
 
     public function createAppointment($applicantId)
     {
-        $times = explode(',', $this->appointment);
+		if (isset($this->appointment['start_at'])) {
+			$times = [$this->appointment['start_at'], $this->appointment['end_at']];
+		} else {
+			$times = explode(',', $this->appointment);
+		}
 
         return Appointment::create([
-            'consultation_id' => $this->consultation,
+            'consultation_id' => is_object($this->consultation) ? $this->consultation->id : $this->consultation,
             'medical_examination_id' => $this->medicalExaminationId,
             'applicant_id' => $applicantId,
             'start_at' => $times[0],

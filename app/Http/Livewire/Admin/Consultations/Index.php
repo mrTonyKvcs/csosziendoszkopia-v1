@@ -43,7 +43,9 @@ class Index extends Component
 
     public function mount()
     {
-        $this->consultations = $this->getActiveConsultations();
+        $this->consultations = Consultation::query()
+            ->orderByDesc('day')
+            ->get();
 
         $this->data['doctors'] = User::query()
             ->doctors()
@@ -87,7 +89,7 @@ class Index extends Component
         $fileName = \Str::slug($consultation->name) . '.csv';
 
         $headers = array(
-            "Content-type"        => "text/csv",
+            "Content-type"        => "text/csv; charset=utf-8",
             "Content-Disposition" => "attachment; filename=$fileName",
             "Pragma"              => "no-cache",
             "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",

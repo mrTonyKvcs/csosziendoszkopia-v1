@@ -17,7 +17,22 @@
 				<x-appointment.steps />
 
 						<div x-show="phase == 1">
-							<x-appointment.select-appointment />
+							<x-forms.select-medical>
+								{{ empty($this->medicalExamination) ? __('Vizsgálat kiválasztása') : $this->medicalExamination->name }}
+							</x-forms.select-medical>
+
+							<x-forms.select-doctor>
+								{{ empty($this->doctor) ? __('Orvos kiválasztása') : $this->doctor->name }}
+							</x-forms.select-doctor>
+
+							<x-forms.select-consultation>
+								{{ empty($this->consultation) ? __('Rendelési nap kiválasztása') : $this->consultation->name }}
+							</x-forms.select-consultation>
+
+							<x-forms.select-appointment>
+								{{ empty($this->appointment) ? __('Rendelési nap kiválasztása') : $this->appointment['start_at'] . '-' . $this->appointment['end_at'] }}
+							</x-forms.select-appointment>
+							{{-- <x-appointment.select-appointment /> --}}
 						</div>
 						<div x-show="phase == 2">
 							<x-appointment.personal-info :admin="true"/>
