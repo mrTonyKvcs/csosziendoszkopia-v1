@@ -13,7 +13,7 @@
         <x-session/>
 		<section x-show="" class="container my-10">
 
-			<div x-data="{phase: @entangle('phase'), appointment: @entangle('appointment')}" class="my-5 md:mt-0 md:col-span-2">
+			<div x-data="{phase: @entangle('phase'), appointment: @entangle('appointment'), medicalExamination: @entangle('medicalExamination'), doctor: @entangle('doctor'), consultation: @entangle('consultation')}" class="my-5 md:mt-0 md:col-span-2">
 				<x-appointment.steps />
 
 						<div x-show="phase == 1">
@@ -21,17 +21,23 @@
 								{{ empty($this->medicalExamination) ? __('Vizsgálat kiválasztása') : $this->medicalExamination->name }}
 							</x-forms.select-medical>
 
-							<x-forms.select-doctor>
-								{{ empty($this->doctor) ? __('Orvos kiválasztása') : $this->doctor->name }}
-							</x-forms.select-doctor>
+							<div x-show="medicalExamination">
+								<x-forms.select-doctor>
+									{{ empty($this->doctor) ? __('Orvos kiválasztása') : $this->doctor->name }}
+								</x-forms.select-doctor>
+							</div>
 
-							<x-forms.select-consultation>
-								{{ empty($this->consultation) ? __('Rendelési nap kiválasztása') : $this->consultation->name }}
-							</x-forms.select-consultation>
+							<div x-show="doctor">
+								<x-forms.select-consultation>
+									{{ empty($this->consultation) ? __('Rendelési nap kiválasztása') : $this->consultation->name }}
+								</x-forms.select-consultation>
+							</div>
 
-							<x-forms.select-appointment>
-								{{ empty($this->appointment) ? __('Rendelési nap kiválasztása') : $this->appointment['start_at'] . '-' . $this->appointment['end_at'] }}
-							</x-forms.select-appointment>
+							<div x-show="consultation">
+								<x-forms.select-appointment>
+									{{ empty($this->appointment) ? __('Rendelési nap kiválasztása') : $this->appointment['start_at'] . '-' . $this->appointment['end_at'] }}
+								</x-forms.select-appointment>
+							</div>
 							{{-- <x-appointment.select-appointment /> --}}
 						</div>
 						<div x-show="phase == 2">
