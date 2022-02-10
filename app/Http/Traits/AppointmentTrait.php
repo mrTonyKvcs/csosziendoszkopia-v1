@@ -10,8 +10,6 @@ trait AppointmentTrait {
     {
         return Applicant::updateOrCreate([
             'social_security_number' => $this->socialSecurityNumber,
-        ],
-        [
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -69,7 +67,7 @@ trait AppointmentTrait {
             fclose($file);
         };
 
-        return response()->stream($callback, 200, $headers);
+        return response()->stream(mb_convert_encoding($callback, 'UTF-16LE', 'UTF-8'), 200, $headers);
     }
 
     public function deleteAppointment($id)
