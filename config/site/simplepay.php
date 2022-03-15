@@ -28,8 +28,8 @@
 
 return [
     //HUF
-    'HUF_MERCHANT' => "OMS52064301",            //merchant account ID (HUF)
-    'HUF_SECRET_KEY' => "TeZyvjfG61jgJqvsPvR2Vm656267J36o",          //secret key for account ID (HUF)
+    'HUF_MERCHANT' => "OMS52064302",            //merchant account ID (HUF)
+    'HUF_SECRET_KEY' => "5bMcopOlH1F2LmnfC36S4uvWW5Ws23Lm",          //secret key for account ID (HUF)
     
     //EUR
     'EUR_MERCHANT' => "",            //merchant account ID (EUR)
@@ -42,7 +42,7 @@ return [
     'SANDBOX' => true,
 
     //common return URL
-    'URL' => 'http://' . $_SERVER['HTTP_HOST'] . '/back.php',
+    'URL' => 'http://' . $_SERVER['HTTP_HOST'] . '/payment-back',
 
     //optional uniq URL for events
     /*

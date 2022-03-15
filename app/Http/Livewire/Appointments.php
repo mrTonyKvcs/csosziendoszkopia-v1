@@ -72,11 +72,8 @@ class Appointments extends Component
 
         $appointment = $this->createAppointment($applicant->id);
 
-        $this->sendMessages($appointment, $applicant);
-
-        // return back();
-
-        return redirect()->route('appointments.greeting', [
+        return redirect()->route('payment.start', [
+            'applicant' => $applicant,
             'appointment' => $appointment
         ]);
     }

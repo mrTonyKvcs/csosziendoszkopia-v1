@@ -1,6 +1,11 @@
 <?php
 namespace SimplePay;
 
+use SimplePay\Signature;
+use SimplePay\Communication;
+use SimplePay\Views;
+use SimplePay\Logger;
+
 /**
  * Base class for SimplePay implementation
  *

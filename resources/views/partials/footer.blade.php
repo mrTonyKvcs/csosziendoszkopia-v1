@@ -29,9 +29,7 @@
 						<div class="col-lg-12 col-md-12 col-12">
 							<div class="copyright-content">
 							    <div>
-                                    <a href="/pdfs/csoszi-endkoszkopia-aszf.pdf" class="text-white" target="_blank">ÁSZF</a>
-                                    |
-                                    <a href="/pdfs/adatvedelmi-nyilatkozat.pdf" class="text-white" target="_blank">Adatvédelmi nyilatkozat</a>
+                                    <a href="/pdfs/aszf.pdf" class="text-white" target="_blank">ÁSZF</a>
 							    </div>
 								<p>© Copyright 2020  |  csosziendoszkopia.hu </p>
 							</div>

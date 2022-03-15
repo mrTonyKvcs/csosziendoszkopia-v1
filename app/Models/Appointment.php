@@ -34,4 +34,9 @@ class Appointment extends Model
     {
         return $this->belongsTo(MedicalExamination::class);
     }
+
+    public function payment()
+    {
+        return $this->morphOne(Payment::class, 'paymentable');
+    }
 }
