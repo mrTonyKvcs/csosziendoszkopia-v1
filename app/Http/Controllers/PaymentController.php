@@ -141,13 +141,44 @@ class PaymentController extends Controller
 			
 			$appointment = $payment->paymentable;
 
-			return redirect()->route('appointments.greeting', [
-				'appointment' => $appointment
-			]);
+			return redirect()->route('payments.greeting', $appointment->id);
 
 		} else {
-			return 'refund';
+			$payment = Payment::query()
+				->where('transaction_id', $result['t'])
+				->where('order_ref', $result['o'])
+				->firstOrFail();
+
+			switch ($result['e']) {
+				case 'CANCEL':
+					$payment->update(['status' => Status::CANCEL_PAYMENT]);
+					break;
+				
+				case 'FAIL':
+					$payment->update(['status' => Status::FAIL_PAYMENT]);
+					break;
+
+				case 'TIMEOUT':
+					$payment->update(['status' => Status::TIMEOUT_PAYMENT]);
+					break;
+			}
+
+			return redirect()->route('pages.payment-error', $payment->id);
 		}
 	}
 
+	public function paymentError(Payment $payment)
+    {
+        return view('payments.error', [ 'transaction' => $payment]);
+    }
+
+    public function greeting(Appointment $appointment)
+    {
+        $transactionId = $appointment->payment->transaction_id;
+
+        return view('payments.greeting', [
+            'appointment'   => $appointment,
+            'transactionId'      => $transactionId
+        ]);
+    }
 }

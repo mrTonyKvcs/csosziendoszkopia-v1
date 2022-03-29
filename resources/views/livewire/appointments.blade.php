@@ -23,16 +23,16 @@
 				<h2 class="text-2xl font-semibold">Időpontfoglalás és fizetés</h2>
 				<p class="text-lg">Foglaljon időpontot a vizsgálatainkra!<br> Ön 5000 Ft előleg fizetésével tud időpontot foglalni on-line, mely összeg levonásra kerül a vizsgálat árából</p>
 			</div>
-			<div class="rounded-md bg-blue-50 p-4 mt-4">
+			<div class="p-4 mt-4 rounded-md bg-blue-50">
 				<div class="flex">
 					<div class="flex-shrink-0">
 						<!-- Heroicon name: solid/information-circle -->
-						<svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+						<svg class="w-5 h-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 							<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
 						</svg>
 					</div>
-					<div class="ml-3 flex-1 md:flex md:justify-between">
-						<p class="text-md text-blue-700">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					<div class="flex-1 ml-3 md:flex md:justify-between">
+						<p class="text-blue-700 text-md">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 					</div>
 				</div>
 			</div>
@@ -41,27 +41,46 @@
 		</section>
 		<section x-show="" class="container my-10">
 
-			<div x-data="{phase: @entangle('phase'), appointment: @entangle('appointment')}" class="my-5 md:mt-0 md:col-span-2">
+			<div x-data="{phase: @entangle('phase'), appointment: @entangle('appointment'), medicalExamination: @entangle('medicalExamination'), doctor: @entangle('doctor'), consultation: @entangle('consultation')}" class="my-5 md:mt-0 md:col-span-2">
 				<x-appointment.steps />
 
-					<x-session />
-
 						<div x-show="phase == 1">
-							<x-appointment.select-appointment />
+							<x-forms.select-medical>
+								{{ empty($this->medicalExamination) ? __('Vizsgálat kiválasztása') : $this->medicalExamination->name }}
+							</x-forms.select-medical>
+
+							<div x-show="medicalExamination">
+								<x-forms.select-doctor>
+									{{ empty($this->doctor) ? __('Orvos kiválasztása') : $this->doctor->name }}
+								</x-forms.select-doctor>
+							</div>
+
+							<div x-show="doctor">
+								<x-forms.select-consultation>
+									{{ empty($this->consultation) ? __('Rendelési nap kiválasztása') : $this->consultation->name }}
+								</x-forms.select-consultation>
+							</div>
+
+							<div x-show="consultation">
+								<x-forms.select-appointment>
+									{{ empty($this->appointment) ? __('Rendelési nap kiválasztása') : $this->appointment['start_at'] . '-' . $this->appointment['end_at'] }}
+								</x-forms.select-appointment>
+							</div>
+							{{-- <x-appointment.select-appointment /> --}}
 						</div>
 						<div x-show="phase == 2">
-							<x-appointment.personal-info />
+							<x-appointment.personal-info/>
 						</div>
 						<div x-show="phase == 3">
 
-							<x-appointment.information/>
+							<x-appointment.information />
 								{{-- <div --}}
 									{{-- x-cloak --}}
 									{{-- x-data="{ appointment: @entangle('appointment') }" --}}
 									{{-- x-show="appointment != null" --}}
 									{{-- class="py-5 text-right" --}}
 									{{-- > --}}
-									{{-- <button type="submit" class="inline-flex justify-center px-4 py-2 text-lg font-medium text-white bg-blue-600 border border-transparent shadow-sm rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> --}}
+									{{-- <button type="submit" class="inline-flex justify-center px-4 py-2 text-lg font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> --}}
 										{{--     Időpontfoglalás és fizetés --}}
 										{{-- </button> --}}
 									{{-- </div> --}}
@@ -69,7 +88,7 @@
 						<div
 								x-show="phase <= 3"
 								>
-								<span class="relative z-0 inline-flex mt-5 shadow-sm rounded-md">
+								<span class="relative z-0 inline-flex mt-5 rounded-md shadow-sm">
 									<button
 											x-show="phase > 1"
 											wire:click="previousPhase"
@@ -101,7 +120,7 @@
 											type="submit"
 											class="relative inline-flex items-center px-2 py-2 -ml-px text-lg font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
 											>
-											Bankkártyás fizetés
+											Új időpont felvétele
 											<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 												<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
 											</svg>

@@ -43,9 +43,4 @@ class PageController extends Controller
 
         return view('page.prices', compact('prices'));
     }
-
-    public function greeting()
-    {
-        return view('page.greeting');
-    }
 }

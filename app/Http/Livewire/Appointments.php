@@ -8,6 +8,9 @@ use App\Http\Traits\MailTrait;
 use App\Models\Applicant;
 use App\Rules\CheckSocialSecurityNumber;
 use Livewire\Component;
+use App\Models\Consultation;
+use App\Models\MedicalExamination;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -24,6 +27,7 @@ class Appointments extends Component
     public $city;
     public $street;
     public $status = 0;
+    public $gdpr = false;
     public $medicalExamination;
     public $medicalExaminations;
     public $medicalExaminationId;
@@ -34,6 +38,10 @@ class Appointments extends Component
     public $appointments = [];
     public $appointment;
     public $submitButton = false;
+	public $selectMedical = false;
+	public $selectDoctor = false;
+	public $selectConsultation = false;
+	public $selectAppointment = false;
 
     protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
 
@@ -44,12 +52,22 @@ class Appointments extends Component
         'socialSecurityNumber' => 'required|numeric',
         'zip' => 'required|numeric',
         'city' => 'required',
-        'street' => 'required'
+        'street' => 'required',
     ];
 
     public function mount()
     {
         $this->medicalExaminations = $this->getActiveMedicalExaminations();
+
+        //Test data
+        $this->name = 'Teszt User';
+        $this->email = "attila.kovacs92@gmail.com";
+        $this->phone = '+36704567890';
+        $this->socialSecurityNumber = '5564654454545';
+        $this->zip = 600;
+        $this->city = "Kecskemet";
+        $this->street = 'Teszt utca 30.';
+        $this->gdpr = true;
     }
 
     public function render()
@@ -60,7 +78,7 @@ class Appointments extends Component
 
     public function save()
     {
-        $this->validate();
+        // $this->validate();
 
         $isBlackListed = $this->checkSocialSecurityNumber($this->socialSecurityNumber);
 
@@ -100,4 +118,31 @@ class Appointments extends Component
             ? $this->phase++
             : null;
     }
+
+	public function setActiveMedical($id)
+	{
+		$this->medicalExamination = MedicalExamination::find($id);
+		$this->selectMedical = false;
+		$this->getDoctors();
+	}
+
+	public function setActiveDoctor($id)
+	{
+		$this->doctor = User::find($id);
+		$this->selectDoctor = false;
+		$this->getConsultations();
+	}
+
+	public function setActiveConsultation($id)
+	{
+		$this->consultation = Consultation::find($id);
+		$this->selectConsultation = false;
+		$this->getAppointments();
+	}
+
+	public function setActiveAppointment($id)
+	{
+		$this->appointment = $this->appointments[$id];
+		$this->selectAppointment = false;
+	}
 }

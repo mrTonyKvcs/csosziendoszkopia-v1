@@ -11,5 +11,7 @@ class Status extends Model
 
     const START_PAYMENT = 'IN_PROGRESS';
     const END_PAYMENT = 'SUCCESS';
-    const ERROR_PAYMENT = 'ERROR';
+    const CANCEL_PAYMENT = 'CANCEL';
+    const TIMEOUT_PAYMENT = 'TIMEOUT';
+    const FAIL_PAYMENT = 'FAIL';
 }

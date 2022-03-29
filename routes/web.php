@@ -21,6 +21,13 @@ Route::get('payment-start', 'App\Http\Controllers\PaymentController@start')
 Route::get('payment-back', 'App\Http\Controllers\PaymentController@back')
 	->name('payment.back');
 
+Route::get('sikertelen-fizetes/{payment}', [
+    'as' => 'pages.payment-error',
+    'uses' => 'App\Http\Controllers\PaymentController@paymentError'
+]);
+
+Route::get('online-bejelentkezes-befejezese/{appointment}', 'App\Http\Controllers\PaymentController@greeting')
+    ->name('payments.greeting');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,8 +42,6 @@ Route::get('payment-back', 'App\Http\Controllers\PaymentController@back')
 Route::get('/', 'App\Http\Controllers\PageController@index');
 Route::get('orvosok/{slug}', [ 'as' => 'pages.doctor', 'uses' => 'App\Http\Controllers\PageController@doctor']);
 Route::get('arak', [ 'as' => 'pages.prices', 'uses' => 'App\Http\Controllers\PageController@prices']);
-Route::get('online-bejelentkezes-befejezese', 'App\Http\Controllers\PageController@greeting')
-    ->name('appointments.greeting');
 
 
 Route::get('online-bejelentkezes', Appointments::class)->name('appointments.index');

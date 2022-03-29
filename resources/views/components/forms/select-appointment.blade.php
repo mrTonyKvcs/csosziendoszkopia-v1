@@ -1,9 +1,9 @@
 <div
     x-data="{open: @entangle('selectAppointment'), activeMedical: @entangle('appointment')}"
 >
-	<label for="first-name" class="block text-md font-medium text-gray-700 mt-5">Időpont kiválasztása</label>
+	<label for="first-name" class="block mt-5 font-medium text-gray-700 text-md">Időpont kiválasztása</label>
     <div class="relative mt-1">
-        <button @click="open = !open" type="button" class="relative w-full py-3 pl-3 pr-10 text-left text-gray-500 bg-white border border-gray-300 cursor-default rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-cyan-700 sm:text-md" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
+        <button @click="open = !open" type="button" class="relative w-full py-3 pl-3 pr-10 text-left text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-cyan-700 sm:text-lg" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
             <span class="block truncate">
                 {{ $slot }}
             </span>
@@ -19,7 +19,7 @@
             x-cloak
             x-show="open"
             @click.outside="open = false"
-            class=" z-10 w-full py-1 mt-1 overflow-auto text-base bg-white shadow-lg max-h-60 rounded-md ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+            class="z-10 w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg  max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-lg"
             tabindex="-1"
             role="listbox"
             aria-labelledby="listbox-label"
