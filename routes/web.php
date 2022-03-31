@@ -21,6 +21,9 @@ Route::get('payment-start', 'App\Http\Controllers\PaymentController@start')
 Route::get('payment-back', 'App\Http\Controllers\PaymentController@back')
 	->name('payment.back');
 
+Route::post('payment-ipn', 'App\Http\Controllers\PaymentController@ipn')
+	->name('payment.ipn');
+
 Route::get('sikertelen-fizetes/{payment}', [
     'as' => 'pages.payment-error',
     'uses' => 'App\Http\Controllers\PaymentController@paymentError'

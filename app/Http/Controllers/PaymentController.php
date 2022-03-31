@@ -8,8 +8,10 @@ use App\Models\Appointment;
 use App\Models\Payment;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use SimplePay\SimplePayStart;
 use SimplePay\SimplePayBack;
+use SimplePay\SimplePayIpn;
 
 class PaymentController extends Controller
 {
@@ -165,6 +167,43 @@ class PaymentController extends Controller
 
 			return redirect()->route('pages.payment-error', $payment->id);
 		}
+	}
+
+	public function ipn(Request $request)
+	{
+		$json = $request->all();
+
+		$trx = new SimplePayIpn;
+
+		$trx->addConfig($this->config);
+
+		Log::info($request->all());
+		//check signature and confirm IPN
+		//-----------------------------------------------------------------------------------------
+		if ($trx->isIpnSignatureCheck($json)) {
+			/**
+			 * Generates all response
+			 * Puts signature into header
+			 * Print response body
+			 *
+			 * Use this OR getIpnConfirmContent
+			 */
+			$trx->runIpnConfirm();
+
+			/**
+			 * Generates all response
+			 * Gets signature and response body
+			 *
+			 * You must set signeature in header and you must print response body!
+			 *
+			 * Use this OR runIpnConfirm()
+			 */
+			//$confirm = $trx->getIpnConfirmContent();
+
+		}
+
+		//no need to print further information
+		exit;
 	}
 
 	public function paymentError(Payment $payment)
