@@ -177,7 +177,6 @@ class PaymentController extends Controller
 
 		$trx->addConfig($this->config);
 
-		Log::info($request->all());
 		//check signature and confirm IPN
 		//-----------------------------------------------------------------------------------------
 		if ($trx->isIpnSignatureCheck($json)) {
@@ -198,7 +197,7 @@ class PaymentController extends Controller
 			 *
 			 * Use this OR runIpnConfirm()
 			 */
-			//$confirm = $trx->getIpnConfirmContent();
+			// $confirm = $trx->getIpnConfirmContent();
 
 		}
 

@@ -10,7 +10,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 40000,
+                'price' => 50000,
             ]
         ]
     ],
@@ -23,7 +23,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 50000,
+                'price' => 60000,
             ]
         ]
     ],
@@ -36,7 +36,7 @@ return [
         'prices' => [
             [
                 'text'  => 'Mintavételi hely',
-                'price' => 10000,
+                'price' => 12000,
             ]
         ]
     ],
@@ -49,11 +49,11 @@ return [
         'prices' => [
             [
                 'text'  => 'Első alkalom',
-                'price' => 15000,
+                'price' => 17000,
             ],
             [
-                'text'  => 'További alkalmak',
-                'price' => 10000,
+                'text'  => 'További alkalmak (összesen)',
+                'price' => 29000,
             ]
         ]
     ],
@@ -66,7 +66,7 @@ return [
         'prices' => [
             [
                 'text'  => 'Első alkalom',
-                'price' => 18000,
+                'price' => 22000,
             ]
         ]
     ],
@@ -79,7 +79,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 10000,
+                'price' => 15000,
             ]
         ]
     ],
@@ -92,7 +92,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 5000,
+                'price' => 6000,
             ]
         ]
     ],
@@ -105,7 +105,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 10000,
+                'price' => 12000,
             ]
         ]
     ],
