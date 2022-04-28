@@ -173,7 +173,7 @@ class PaymentController extends Controller
 
 	public function ipn(Request $request)
 	{
-		$json = $request->all();
+		$json = $request;
 		Log::info($json);
 
 		try {
