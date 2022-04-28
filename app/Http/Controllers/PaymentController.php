@@ -7,6 +7,7 @@ use App\Models\Applicant;
 use App\Models\Appointment;
 use App\Models\Payment;
 use App\Models\Status;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\TryCatch;
@@ -173,39 +174,47 @@ class PaymentController extends Controller
 
 	public function ipn(Request $request)
 	{
+		foreach (getallheaders() as $name => $value) {
+			Log::info("$name: $value\n");
+		}
+
+
 		$json = $request;
 		Log::info($json);
 
 		try {
-			$trx = new SimplePayIpn;
+			$json['receiveDate'] = now(); 
 
-			$trx->addConfig($this->config);
+			return json_encode($json);
+			// $trx = new SimplePayIpn;
 
-			// dd($json, $trx);
+			// $trx->addConfig($this->config);
+
+			// // dd($json, $trx);
 
 
-			//check signature and confirm IPN
-			//-----------------------------------------------------------------------------------------
-			if ($trx->isIpnSignatureCheck($json)) {
-				/**
-				 * Generates all response
-				 * Puts signature into header
-				 * Print response body
-				 *
-				 * Use this OR getIpnConfirmContent
-				 */
-				$trx->runIpnConfirm();
+			// //check signature and confirm IPN
+			// //-----------------------------------------------------------------------------------------
+			// if ($trx->isIpnSignatureCheck($json)) {
+			// 	/**
+			// 	 * Generates all response
+			// 	 * Puts signature into header
+			// 	 * Print response body
+			// 	 *
+			// 	 * Use this OR getIpnConfirmContent
+			// 	 */
+			// 	$trx->runIpnConfirm();
 
-				/**
-				 * Generates all response
-				 * Gets signature and response body
-				 *
-				 * You must set signeature in header and you must print response body!
-				 *
-				 * Use this OR runIpnConfirm()
-				 */
-				// $confirm = $trx->getIpnConfirmContent();
-			}
+			// 	/**
+			// 	 * Generates all response
+			// 	 * Gets signature and response body
+			// 	 *
+			// 	 * You must set signeature in header and you must print response body!
+			// 	 *
+			// 	 * Use this OR runIpnConfirm()
+			// 	 */
+			// 	// $confirm = $trx->getIpnConfirmContent();
+			// }
 
 		} catch (Throwable $e) {
 			Log::error($e);
