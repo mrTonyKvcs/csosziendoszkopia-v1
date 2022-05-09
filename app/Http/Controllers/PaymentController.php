@@ -178,7 +178,7 @@ class PaymentController extends Controller
 		$json = $request->all();
 
 		try {
-			return $request->header->signature;
+			return $request->header('signature');
 			$json['receiveDate'] = now(); 
 
 			return json_encode($json);
