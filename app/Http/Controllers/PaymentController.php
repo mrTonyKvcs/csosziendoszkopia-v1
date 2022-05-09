@@ -10,6 +10,7 @@ use App\Models\Status;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Laravel\SerializableClosure\Signers\Hmac;
 use PhpParser\Node\Stmt\TryCatch;
 use SimplePay\SimplePayStart;
 use SimplePay\SimplePayBack;
@@ -179,7 +180,8 @@ class PaymentController extends Controller
 
 		try {
 			$json['receiveDate'] = now(); 
-			$signature = codeBase64(hmacWithSha384('OMS52064302', $json));
+			// $signature = \codeBase64(hmacWithSha384('OMS52064302', $json));
+			$signature = base64_encode(hash_hmac('384', 'OMS52064302', 'secret'));
 
 			return response($json, 200)
 				->header('signature', $request->header('signature'));
