@@ -179,6 +179,7 @@ class PaymentController extends Controller
 
 		try {
 			$json['receiveDate'] = now(); 
+			$signature = codeBase64(hmacWithSha384('OMS52064302', $json));
 
 			return response($json, 200)
 				->header('signature', $request->header('signature'));
