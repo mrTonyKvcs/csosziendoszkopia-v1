@@ -177,44 +177,11 @@ class PaymentController extends Controller
 
         try {
             $json['receiveDate'] = now();
-            // $signature = \codeBase64(hmacWithSha384('OMS52064302', $json));
-            // $signature = base64_encode(hash_hmac('sha384', json_encode($json), '5bMcopOlH1F2LmnfC36S4uvWW5Ws23Lm'));
             $signature = base64_encode(hash_hmac('sha384', json_encode($json), trim('5bMcopOlH1F2LmnfC36S4uvWW5Ws23Lm'), true));
 
             return response($json, 200)
                 ->header('Content-Type', 'application/json')
                 ->header('Signature', $signature);
-            // ->header('signature', $request->header('signature'));
-            
-            $trx = new SimplePayIpn;
-
-            $trx->addConfig($this->config);
-            $confirm = $trx->getIpnConfirmContent();
-            return $confirm;
-
-            // //check signature and confirm IPN
-            // //-----------------------------------------------------------------------------------------
-            if ($trx->isIpnSignatureCheck($json)) {
-                dd($json);
-                /**
-                 * Generates all response
-                 * Puts signature into header
-                 * Print response body
-                 *
-                 * Use this OR getIpnConfirmContent
-                 */
-                // return $trx->runIpnConfirm();
-
-                /**
-                 * Generates all response
-                 * Gets signature and response body
-                 *
-                 * You must set signeature in header and you must print response body!
-                 *
-                 * Use this OR runIpnConfirm()
-                 */
-                // $confirm = $trx->getIpnConfirmContent();
-            }
         } catch (Throwable $e) {
             Log::error($e);
             dd($e);
