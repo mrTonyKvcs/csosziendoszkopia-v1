@@ -174,47 +174,42 @@ class PaymentController extends Controller
 
 	public function ipn(Request $request)
 	{
-		foreach (getallheaders() as $name => $value) {
-			Log::info("$name: $value\n");
-		}
 
-
-		$json = $request;
-		Log::info($json);
+		$json = $request->all();
 
 		try {
-			$json['receiveDate'] = now(); 
+			// $json['receiveDate'] = now(); 
 
-			return json_encode($json);
-			// $trx = new SimplePayIpn;
+			// return json_encode($json);
+			$trx = new SimplePayIpn;
 
-			// $trx->addConfig($this->config);
-
-			// // dd($json, $trx);
-
+			$trx->addConfig($this->config);
+			$confirm = $trx->getIpnConfirmContent();
+			return $confirm;
 
 			// //check signature and confirm IPN
 			// //-----------------------------------------------------------------------------------------
-			// if ($trx->isIpnSignatureCheck($json)) {
-			// 	/**
-			// 	 * Generates all response
-			// 	 * Puts signature into header
-			// 	 * Print response body
-			// 	 *
-			// 	 * Use this OR getIpnConfirmContent
-			// 	 */
-			// 	$trx->runIpnConfirm();
+			if ($trx->isIpnSignatureCheck($json)) {
+				dd($json);
+				/**
+				 * Generates all response
+				 * Puts signature into header
+				 * Print response body
+				 *
+				 * Use this OR getIpnConfirmContent
+				 */
+				// return $trx->runIpnConfirm();
 
-			// 	/**
-			// 	 * Generates all response
-			// 	 * Gets signature and response body
-			// 	 *
-			// 	 * You must set signeature in header and you must print response body!
-			// 	 *
-			// 	 * Use this OR runIpnConfirm()
-			// 	 */
-			// 	// $confirm = $trx->getIpnConfirmContent();
-			// }
+				/**
+				 * Generates all response
+				 * Gets signature and response body
+				 *
+				 * You must set signeature in header and you must print response body!
+				 *
+				 * Use this OR runIpnConfirm()
+				 */
+				// $confirm = $trx->getIpnConfirmContent();
+			}
 
 		} catch (Throwable $e) {
 			Log::error($e);
