@@ -181,7 +181,9 @@ class PaymentController extends Controller
 			$json['signature'] = $request->header('signature');
 			$json['receiveDate'] = now(); 
 
-			return json_encode($json);
+			return response($json, 200)
+				->header('signature', $request->header('signature'));
+			
 			$trx = new SimplePayIpn;
 
 			$trx->addConfig($this->config);
