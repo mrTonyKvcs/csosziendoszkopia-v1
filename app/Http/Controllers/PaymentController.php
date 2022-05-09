@@ -178,9 +178,9 @@ class PaymentController extends Controller
 		$json = $request->all();
 
 		try {
-			// $json['receiveDate'] = now(); 
+			$json['receiveDate'] = now(); 
 
-			// return json_encode($json);
+			return json_encode($json);
 			$trx = new SimplePayIpn;
 
 			$trx->addConfig($this->config);
