@@ -200,6 +200,8 @@ class PaymentController extends Controller
     {
         $transactionId = $appointment->payment->transaction_id;
 
+        $this->sendMessages($appointment, $appointment->applicant);
+
         return view('payments.greeting', [
             'appointment'   => $appointment,
             'transactionId'      => $transactionId

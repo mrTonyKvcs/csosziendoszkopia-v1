@@ -62,5 +62,5 @@ return [
     //3DS
     'AUTOCHALLENGE' => true,                      //in case of unsuccessful payment with registered card run automatic challange
 
-    'DEFAULT_PRICE' => 500
+    'DEFAULT_PRICE' => 5000
 ];
