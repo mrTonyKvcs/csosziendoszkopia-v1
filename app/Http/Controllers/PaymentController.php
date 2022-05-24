@@ -41,7 +41,7 @@ class PaymentController extends Controller
         $trx->addData('currency', $currency);
 
         $trx->addConfig($this->config);
-        $trx->addData('total', 5000);
+        $trx->addData('total', $this->config['DEFAULT_PRICE']);
 
 
         $trx->addItems(
@@ -50,7 +50,7 @@ class PaymentController extends Controller
                 'title' => 'Vizsgálat: ' . $appointment->medicalExamination->name,
                 'desc' => 'Vizsgálat előlege',
                 'amount' => 1,
-                'price' => 5000,
+                'price' => $this->config['DEFAULT_PRICE'],
                 // 'tax' => '27',
             )
         );

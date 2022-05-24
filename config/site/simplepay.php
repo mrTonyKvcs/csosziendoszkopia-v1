@@ -28,8 +28,8 @@
 
 return [
     //HUF
-    'HUF_MERCHANT' => "OMS52064302",            //merchant account ID (HUF)
-    'HUF_SECRET_KEY' => "5bMcopOlH1F2LmnfC36S4uvWW5Ws23Lm",          //secret key for account ID (HUF)
+    'HUF_MERCHANT' => env('SIMPLEPAY_HUF_MERCHANT'),            //merchant account ID (HUF)
+    'HUF_SECRET_KEY' => env('SIMPLEPAY_HUF_SECRET_KEY'),          //secret key for account ID (HUF)
     
     //EUR
     'EUR_MERCHANT' => "",            //merchant account ID (EUR)
@@ -39,7 +39,7 @@ return [
     'USD_MERCHANT' => "",            //merchant account ID (USD)
     'USD_SECRET_KEY' => "",          //secret key for account ID (USD)
 
-    'SANDBOX' => true,
+    'SANDBOX' => env('SIMPLEPAY_SANDBOX'),
 
     //common return URL
     'URL' => 'http://' . $_SERVER['HTTP_HOST'] . '/payment-back',
@@ -61,4 +61,6 @@ return [
 
     //3DS
     'AUTOCHALLENGE' => true,                      //in case of unsuccessful payment with registered card run automatic challange
+
+    'DEFAULT_PRICE' => 500
 ];
