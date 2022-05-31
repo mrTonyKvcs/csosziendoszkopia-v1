@@ -7,6 +7,7 @@
 
 <h1>Új online bejelentkezes</h1>
 
+<p><strong>Orvos:</strong> {{ $doctorName }}</p>
 <p><strong>Időpont:</strong> {{ $appointment }}</p>
 <p><strong>Neve:</strong> {{ $name }}</p>
 <p><strong>Email:</strong> {{ $email ? $email : ''}}</p>

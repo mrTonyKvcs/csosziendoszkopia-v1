@@ -52,7 +52,7 @@
 									{{-- x-show="appointment != null" --}}
 									{{-- class="py-5 text-right" --}}
 									{{-- > --}}
-									{{-- <button type="submit" class="inline-flex justify-center px-4 py-2 text-lg font-medium text-white bg-blue-600 border border-transparent shadow-sm rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> --}}
+									{{-- <button type="submit" class="inline-flex justify-center px-4 py-2 text-lg font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> --}}
 										{{--     Időpontfoglalás és fizetés --}}
 										{{-- </button> --}}
 									{{-- </div> --}}
@@ -60,7 +60,7 @@
 						<div
 								x-show="phase <= 3"
 								>
-								<span class="relative z-0 inline-flex mt-5 shadow-sm rounded-md">
+								<span class="relative z-0 inline-flex mt-5 rounded-md shadow-sm">
 									<button
 											x-show="phase > 1"
 											wire:click="previousPhase"
@@ -103,5 +103,6 @@
 		</section>
 			</div>
 	</form>
+	
 	</main>
 </div>

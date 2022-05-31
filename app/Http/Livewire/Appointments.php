@@ -42,6 +42,7 @@ class Appointments extends Component
 	public $selectDoctor = false;
 	public $selectConsultation = false;
 	public $selectAppointment = false;
+    public $info;
 
     protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
 
@@ -123,6 +124,7 @@ class Appointments extends Component
 	{
 		$this->medicalExamination = MedicalExamination::find($id);
 		$this->selectMedical = false;
+        $this->info = config('site.medical-examinations')[$this->medicalExamination->slug];
 		$this->getDoctors();
 	}
 

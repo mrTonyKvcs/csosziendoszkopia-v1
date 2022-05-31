@@ -32,7 +32,7 @@
 						</svg>
 					</div>
 					<div class="flex-1 ml-3 md:flex md:justify-between">
-						<p class="text-blue-700 text-md"><strong>Kedves Betegünk!</strong> <br>Amennyiben  oltási igazolvánnyal nem rendelkezik, a gyomor- és vastagbéltükrözés elvégzéséhez negatív PCR teszt bemutatása szükséges, mely a vizsgálat időpontjához viszonyítva 48 óránál nem lehet korábbi. 
+						<p class="text-lg text-blue-700"><strong>Kedves Betegünk!</strong> <br>Amennyiben  oltási igazolvánnyal nem rendelkezik, a gyomor- és vastagbéltükrözés elvégzéséhez negatív PCR teszt bemutatása szükséges, mely a vizsgálat időpontjához viszonyítva 48 óránál nem lehet korábbi. 
 						</p>
 					</div>
 				</div>
@@ -132,4 +132,11 @@
 		</section>
 			</div>
 	</form>
+	<div class="flex flex-col items-center justify-center mb-10">
+		<h3 class="mb-3 text-lg font-bold uppercase">Foglaljon gyorsan és könnyedén időpontot</h3>
+		<img class4="mb-5" src="img/section-img.png" alt="#">
+		<video class="mt-10" width="80%" height="auto" controls>Your browser does not support the &lt;video&gt; tag.
+			<source src="/videos/online-help.mp4" />
+		</video>
+	</div>
 </div>

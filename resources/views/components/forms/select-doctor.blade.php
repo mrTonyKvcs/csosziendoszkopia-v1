@@ -1,7 +1,7 @@
 <div
     x-data="{open: @entangle('selectDoctor'), activeMedical: @entangle('doctor')}"
 >
-	<label for="first-name" class="block mt-5 font-medium text-gray-700 text-md">Orvos kiválasztása</label>
+	<label for="first-name" class="block mt-5 text-lg font-medium text-gray-700">Orvos kiválasztása</label>
     <div class="relative mt-1">
         <button @click="open = !open" type="button" class="relative w-full py-3 pl-3 pr-10 text-left text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-cyan-700 sm:text-lg" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label">
             <span class="block truncate">

@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Mail;
 trait MailTrait {
     public function sendMessages($appointment, $applicant)
     {
+        $applicant->doctorName = $appointment->consultation->user->name;
         $applicant->appointment = $appointment->consultation->nameWithoutTime . ' ' . $appointment->start_at . ' - ' . $appointment->end_at;
 
         $applicant->medicalExamination = $appointment->medicalExamination->slug;
+
+        $applicant->startAt = $appointment->start_at;
 
         Mail::send('emails.new-applicant', $applicant->toArray(), function($message) use ($appointment) {
             // $message->to([$appointment->consultation->user->email])

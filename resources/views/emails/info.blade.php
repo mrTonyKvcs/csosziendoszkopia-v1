@@ -7,6 +7,7 @@
     <h1>Sikeres online bejelentkezés!</h1>
     {{-- <h1>Sikeres online fizetés és bejelentkezés!</h1> --}}
     <p>Az időpontja: {{ $appointment }}</p>
+    <p><strong>Orvos neve:</strong> {{ $doctorName }}</p>
 
     @if($medicalExamination === 'gasztroszkopia')
 
@@ -35,18 +36,18 @@ félrenyelés veszélye.</p>
             <li>gyümölcs joghurt</li>
             <li>tökfőzelék, mák</li>
         </ul>
-
-        <p><strong>Fogyasszon bőségesen folyadékot! Ne igyon tejet, vagy tejtartalmú italokat! </strong></p>
-        <p><strong>Ne egyen magas rosttartalmú ételeket, úgymint gyümölcs, zöldség, mogyoró, dió, napraforgó, tökmag, chia mag, mák, rizs, teljes kiörlésű pékárú.</strong></p>
-        <p><strong>A vizsgálatot megelőző napon </strong>ehet egy könnyű reggelit (pl. főtt tojás, pirítós), de utána szilárd ételt nem fogyaszthat. Ha nagyon éhes, szopogasson cukrot, egyen mézet.</p>
-        <p><strong>Délelőtt 10 órakor </strong>oldjon fel 2 tasak ENDOGOL port 2 liter vízben, majd 1-2 óra alatt igya meg.</p>
-        <p><strong>Délután </strong> csak folyadék (pl. szűrt almalé, fehérszőlő ital, kávé-tea cukorral, szűrt húsleves, ízesített szénsavmentes ásványvíz)</p>
-        <p><strong>15 órakor </strong>oldjon fel 2 tasak ENDOGOL port 2 liter vízben, majd 1-2 óra alatt igya meg.</p>
-        <p>Folyadékból szükség szerint fogyaszthat a vizsgálat napján is.</p>
-        <p>Ha délutánra esik a vizsgálat időpontja, bőséges folyadékbevitel (kb. 3-4 liter)</p>
-        <p><strong>Szokásos gyógyszereit vegye be, kivéve az antidiabetikus készítményeket (cukorgyógyszerek). Ha vastablettát szed, annak szedését a vizsgálat előtt 1 héttel függessze fel.</strong></p>
-        <p><strong>A megbeszélt időpontban jelentkezzen a vizsgálatra. A vizsgálatra hozzon magával 1 pár papucsot és maszkot. Amennyiben bódítást szeretne kérni, hozzon magával kísérőt, mert aznap nem vezethet. </strong></p>
-
+        @if ($doctorName === 'Dr Csőszi Tibor')
+            <p><strong>Fogyasszon bőségesen folyadékot! Ne igyon tejet, vagy tejtartalmú italokat! </strong></p>
+            <p><strong>Ne egyen magas rosttartalmú ételeket, úgymint gyümölcs, zöldség, mogyoró, dió, napraforgó, tökmag, chia mag, mák, rizs, teljes kiörlésű pékárú.</strong></p>
+            <p><strong>A vizsgálatot megelőző napon </strong>ehet egy könnyű reggelit (pl. főtt tojás, pirítós), de utána szilárd ételt nem fogyaszthat. Ha nagyon éhes, szopogasson cukrot, egyen mézet.</p>
+            <p><strong>Délelőtt 10 órakor </strong>oldjon fel 2 tasak ENDOGOL port 2 liter vízben, majd 1-2 óra alatt igya meg.</p>
+            <p><strong>Délután </strong> csak folyadék (pl. szűrt almalé, fehérszőlő ital, kávé-tea cukorral, szűrt húsleves, ízesített szénsavmentes ásványvíz)</p>
+            <p><strong>15 órakor </strong>oldjon fel 2 tasak ENDOGOL port 2 liter vízben, majd 1-2 óra alatt igya meg.</p>
+            <p>Folyadékból szükség szerint fogyaszthat a vizsgálat napján is.</p>
+            <p>Ha délutánra esik a vizsgálat időpontja, bőséges folyadékbevitel (kb. 3-4 liter)</p>
+            <p><strong>Szokásos gyógyszereit vegye be, kivéve az antidiabetikus készítményeket (cukorgyógyszerek). Ha vastablettát szed, annak szedését a vizsgálat előtt 1 héttel függessze fel.</strong></p>
+            <p><strong>A megbeszélt időpontban jelentkezzen a vizsgálatra. A vizsgálatra hozzon magával 1 pár papucsot és maszkot. Amennyiben bódítást szeretne kérni, hozzon magával kísérőt, mert aznap nem vezethet. </strong></p>
+        @endif
     @endif
 </body>
 </html>

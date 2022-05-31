@@ -19,13 +19,13 @@
                 @error('name') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-			@if(!$admin)
+			{{-- @if(!$admin) --}}
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Email</small>
 					<input type="text" wire:model="email" id="email_address" autocomplete="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					@error('email') <span class="error">{{ $message }}</span> @enderror
 				</div>
-			@endif
+			{{-- @endif --}}
 
             <div class="col-span-6 sm:col-span-2">
 				<small class="text-lg">Telefonszám</small>
@@ -56,22 +56,24 @@
 				</div>
 			@endif
         </div>
-	<div class="flex items-start py-4 mt-1 sm:py-5 sm:px-6">
-		<div class="flex items-center h-6 mt-1">
-			<input id="comments" wire:model="gdpr" name="gdpr" type="checkbox"
-				class="text-gray-600 border-gray-300 rounded w-7 h-7 focus:ring-gray-500">
-		</div>
-		<div>
-			<div class="ml-3 text-md">
-				<label for="comments" class="font-medium text-gray-700">Elfogadom a feltételeket</label>
-				<p class="text-gray-500">A "Jegyvásárlás" gomb megnyomásával Ön elfogadja az <a href="/pdfs/aszf.pdf"
-						class="text-gold" target="_blank">Általános Szerződési Feltételeket, az Adatkezelési
-						Szabályzatot</a>, a 45/2014. (II. 26) Korm. rendelet 15. §-a szerinti tájékoztatást, <a
-						href="/pdfs/adattovabbitasi-nyilatkozat.pdf" class="text-gold" target="_blank">Adattovábbítási
-						nyilatkozatot</a> valamint kijelenti, hogy elmúlt 18 éves. </p>
+	@if(!$admin)
+		<div class="flex items-start py-4 mt-1 sm:py-5 sm:px-6">
+			<div class="flex items-center h-6 mt-1">
+				<input id="comments" wire:model="gdpr" name="gdpr" type="checkbox"
+					class="text-gray-600 border-gray-300 rounded w-7 h-7 focus:ring-gray-500">
 			</div>
-			@error('gdpr') <span class="error">{{ $message }}</span> @enderror
+				<div>
+					<div class="ml-3 text-md">
+						<label for="comments" class="font-medium text-gray-700">Elfogadom a feltételeket</label>
+						<p class="text-gray-500">A "Jegyvásárlás" gomb megnyomásával Ön elfogadja az <a href="/pdfs/aszf.pdf"
+								class="text-gold" target="_blank">Általános Szerződési Feltételeket, az Adatkezelési
+								Szabályzatot</a>, a 45/2014. (II. 26) Korm. rendelet 15. §-a szerinti tájékoztatást, <a
+								href="/pdfs/adattovabbitasi-nyilatkozat.pdf" class="text-gold" target="_blank">Adattovábbítási
+								nyilatkozatot</a> valamint kijelenti, hogy elmúlt 18 éves. </p>
+					</div>
+					@error('gdpr') <span class="error">{{ $message }}</span> @enderror
+				</div>
 		</div>
-	</div>
+	@endif
 </div>
 

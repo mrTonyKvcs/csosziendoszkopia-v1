@@ -14,7 +14,7 @@
                         >
                             1. lépés
                         </span>
-                        <span class="text-sm font-medium">Vizsgálat és az Orvos kiválasztása</span>
+                        <span class="font-medium text-md">Vizsgálat és az Orvos kiválasztása</span>
                     </div>
                 </li>
 
@@ -30,7 +30,7 @@
                         >
                             2. lépés
                         </span>
-                        <span class="text-sm font-medium">Személyes adatok megadása</span>
+                        <span class="font-medium text-md">Személyes adatok megadása</span>
                     </div>
                 </li>
 
@@ -46,7 +46,7 @@
                         >
                             3. lépés
                         </span>
-                        <span class="text-sm font-medium">Adatok ellenőrzése és fizetés</span>
+                        <span class="font-medium text-md">Adatok ellenőrzése és fizetés</span>
                     </div>
                 </li>
             </ol>

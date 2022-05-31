@@ -42,6 +42,7 @@ class Appointments extends Component
 	public $selectDoctor = false;
 	public $selectConsultation = false;
 	public $selectAppointment = false;
+    public $info;
 
     // protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
 
@@ -80,7 +81,7 @@ class Appointments extends Component
 
         $appointment = $this->createAppointment($applicant->id);
 
-        // $this->sendMessages($appointment, $applicant);
+        $this->sendMessages($appointment, $applicant);
 
         session()->flash('success', 'Sikeresen felvette az új időpontot!');
 		return redirect()->route('admin.appointment');
