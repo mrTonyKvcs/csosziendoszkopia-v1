@@ -43,9 +43,9 @@
                     <div class="widget-main">
                         <!-- Single Widget -->
                         <div class="single-widget">
-                            <i class="icofont-ui-call"></i>
-                            <p>Telefonszám</p>
-                            <h4><a href="tel:+36707794367">+36 70 779 43 67</a></h4>
+                            <i class="icofont-ui-email"></i>
+                            <p>Email</p>
+                            <h4><a href="mailto:csosziendoszkopia@gmail.com">csosziendoszkopia@gmail.com</a></h4>
                         </div>
                         <!--/ End Single Widget -->
                         <!-- Single Widget -->
