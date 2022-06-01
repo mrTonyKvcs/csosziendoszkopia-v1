@@ -66,6 +66,34 @@
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <style>
+            .slider .owl-carousel .owl-controls .owl-nav .owl-next {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .slider .owl-carousel .owl-controls .owl-nav .owl-prev {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .section-title {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .services .single-service {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
     </head>
 
     <body>

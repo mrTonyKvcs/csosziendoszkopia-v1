@@ -29,7 +29,7 @@
                 <div class="single-fun wow fadeIn" data-wow-delay="0.6s" data-wow-duration="0.5s">
                     <i class="icofont-simple-smile"></i>
                     <div class="content">
-                        <span class="counter">5379</span>
+                        <span class="counter">6779</span>
                         <p>Elégedett páciens</p>
                     </div>
                 </div>
