@@ -135,7 +135,7 @@
 	<div class="flex flex-col items-center justify-center mb-10">
 		<h3 class="mb-3 text-lg font-bold uppercase">Foglaljon gyorsan és könnyedén időpontot</h3>
 		<img class4="mb-5" src="img/section-img.png" alt="#">
-		<video class="mt-10" width="80%" height="auto" controls>Your browser does not support the &lt;video&gt; tag.
+		<video class="mt-10" width="70%" height="auto" controls>Your browser does not support the &lt;video&gt; tag.
 			<source src="/videos/online-help.mp4" />
 		</video>
 	</div>
