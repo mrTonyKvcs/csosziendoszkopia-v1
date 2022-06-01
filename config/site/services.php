@@ -61,7 +61,7 @@ return [
         'section' => true,
         'route' => null,
         'name' => 'Konzultáció',
-        'description' => 'Személyes konzultáció: előzetes, az asszisztenssel történt egyeztetés után, bejelentkezés alapján van lehetőség személyes megbeszélésre.',
+        'description' => 'A konzultáció időtartama körülbelül 15 perc. A tükrözéses vizsgálatok az orvossal történő konzultációt követően, előre megbeszélt  időpontban, megfelelő előkészítés után történnek.',
         'icon' => 'consultation.svg',
         'prices' => [
             [
