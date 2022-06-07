@@ -49,7 +49,7 @@ class Appointments extends Component
     protected $rules = [
         'name' => 'required|min:6',
         'email' => 'required|email',
-        'phone' => 'required|min:12',
+        'phone' => 'required|min:10',
         'socialSecurityNumber' => 'required|numeric',
         'zip' => 'required|numeric',
         'city' => 'required',

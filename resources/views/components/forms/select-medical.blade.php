@@ -51,7 +51,6 @@
     @empty(!$this->info)
         <div class="mt-5 text-lg">
             <p class="mb-2">{{ $this->info['text'] }}</p>
-            {{-- <label for="first-name" class="block mt-5 text-lg font-medium text-gray-700">Egyéb költségek</label> --}}
             <ul class="list-none">
                 @foreach ($this->info as $title => $price)
                     @if($title != 'text')
