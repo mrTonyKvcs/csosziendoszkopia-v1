@@ -38,6 +38,7 @@ félrenyelés veszélye.</p>
             <p><strong>Ne igyon tejet vagy tejtartalmú italokat!</strong></p>
             <p><strong>Ha vastablettát szed, azt a vizsgálat előtt 1 héttel hagyja abba.</strong></p>
             <p>Ügyelni kell a megfelelő folyadék bevitelre, főleg meleg nyári időszakban, ezért ha még kívánja, fogyasszon plusz folyadékot a leírtakhoz képest.</p>
+            <p><strong>Az Endogol vény nélkül kapható termék.</strong></p>
             <p>A <strong>VIZSGÁLAT ELŐTTI NAPON REGGEL</strong> könnyű reggelit fogyasszon (pl. pirítós/vajas kenyér)</p>
             <p>A <strong>VIZSGÁLAT ELŐTTI NAPON DÉLELŐTT 10 ÓRAKOR</strong> oldjon fel 2 tasak Endogol-t 2 liter vízben és 1-2 óra alatt fogyassza el.</p>
             <p>A <strong>VIZSGÁLAT ELŐTTI NAPON 15:00 ÓRAKOR</strong> oldja fel a másik 2 tasak Endogol-t 2 liter vízben és 1-2 óra alatt fogyassza el.</p>
@@ -61,6 +62,7 @@ félrenyelés veszélye.</p>
             <p><strong>Ne igyon tejet vagy tejtartalmú italokat!</strong></p>
             <p><strong>Ha vastablettát szed, azt a vizsgálat előtt 1 héttel hagyja abba.</strong></p>
             <p>Ügyelni kell a megfelelő folyadék bevitelre, főleg meleg nyári időszakban, ezért ha még kívánja, fogyasszon plusz folyadékot a leírtakhoz képest.</p>
+            <p><strong>Az Endogol vény nélkül kapható termék.</strong></p>
             <p>A <strong>VIZSGÁLAT ELŐTTI NAPON REGGEL</strong> könnyű reggelit fogyasszon (pl. pirítós/vajas kenyér)</p>
             <p>A <strong>VIZSGÁLAT ELŐTTI NAPON DÉLBEN</strong> light-os, könnyű levest még ehet.</p>
             <p>A <strong>VIZSGÁLAT ELŐTTI NAPON DÉLUTÁN 15 órakor</strong> oldjon fel 2 tasak Endogolt 2 liter vízben és 1-2 óra alatt fogyassza el.</p>

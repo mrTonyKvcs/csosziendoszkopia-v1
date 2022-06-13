@@ -64,7 +64,7 @@
 
 							<div x-show="consultation">
 								<x-forms.select-appointment>
-									{{ empty($this->appointment) ? __('Rendelési nap kiválasztása') : $this->appointment['start_at'] . '-' . $this->appointment['end_at'] }}
+									{{ empty($this->appointment) ? __('Időpont kiválasztása') : $this->appointment['start_at'] . '-' . $this->appointment['end_at'] }}
 								</x-forms.select-appointment>
 							</div>
 							{{-- <x-appointment.select-appointment /> --}}

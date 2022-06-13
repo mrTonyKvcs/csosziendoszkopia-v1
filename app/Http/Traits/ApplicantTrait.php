@@ -149,14 +149,16 @@ trait ApplicantTrait
 
             foreach($new_array_of_time as $key => $time) {
                 foreach($consultation->appointments as $appointment) {
-					$appointment['start_at'] = Carbon::parse($appointment['start_at'])->subMinute()->format('H:i');
+                    if ($appointment->payment->status == 'SUCCESS') {
 
-					$appointment['end_at'] = Carbon::parse($appointment['end_at'])->subMinute()->format('H:i');
+                        $appointment['start_at'] = Carbon::parse($appointment['start_at'])->subMinute()->format('H:i');
 
-                    if (($time['start_at'] < $appointment['end_at']) && ($time['end_at'] > $appointment['start_at'])) {
-                        \Arr::pull($new_array_of_time, $key);
+                        $appointment['end_at'] = Carbon::parse($appointment['end_at'])->subMinute()->format('H:i');
+
+                        if (($time['start_at'] < $appointment['end_at']) && ($time['end_at'] > $appointment['start_at'])) {
+                            \Arr::pull($new_array_of_time, $key);
+                        }
                     }
-
                 }
             }
 
