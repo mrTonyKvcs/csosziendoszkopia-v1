@@ -34,7 +34,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-100">
                         @foreach($this->appointments as $appointment)
-                            @if ($appointment->payment->status == 'SUCCESS')
+                            {{-- @if ($appointment->payment->status == 'SUCCESS') --}}
                                 <tr>
                                     <td class="px-6 py-3 text-sm font-medium text-center text-gray-900 max-w-0 whitespace-nowrap">
                                         {{ $loop->index + 1 }}
@@ -53,15 +53,15 @@
                                         <div class="flex items-center space-x-2">
                                             <div class="flex flex-shrink-0 -space-x-1">
                                                 <a href="#" class="truncate hover:text-gray-600">
-                                                    <span>{{ $appointment->medicalExamination->name }}</span>
+                                                    <span>{{ $appointment->medicalExamination->name ?? null }}</span>
                                                 </a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{ $appointment->start_at }}</td>
                                     <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{ $appointment->end_at }}</td>
-                                    <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{ $appointment->applicant->name }}</td>
-                                    <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{ $appointment->applicant->social_security_number }}</td>
+                                    <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{ $appointment->applicant->name ?? null }}</td>
+                                    <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{ $appointment->applicant->social_security_number ?? null }}</td>
                                     <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">idopont</td>
                                     <td class="pr-6">
                                         <div x-data="{itemDropdown: false}" class="relative flex items-center justify-end">
@@ -115,7 +115,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                            @endif
+                            {{-- @endif --}}
                         @endforeach
                     </tbody>
                 </table>

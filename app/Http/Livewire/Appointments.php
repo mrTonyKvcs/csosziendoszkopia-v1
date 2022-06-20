@@ -61,14 +61,14 @@ class Appointments extends Component
         $this->medicalExaminations = $this->getActiveMedicalExaminations();
 
         //Test data
-        // $this->name = 'Teszt User';
-        // $this->email = "attila.kovacs92@gmail.com";
-        // $this->phone = '+36704567890';
-        // $this->socialSecurityNumber = '5564654454545';
-        // $this->zip = 600;
-        // $this->city = "Kecskemet";
-        // $this->street = 'Teszt utca 30.';
-        // $this->gdpr = true;
+        $this->name = 'Teszt User';
+        $this->email = "attila.kovacs92@gmail.com";
+        $this->phone = '+36704567890';
+        $this->socialSecurityNumber = '5564654454545';
+        $this->zip = 600;
+        $this->city = "Kecskemet";
+        $this->street = 'Teszt utca 30.';
+        $this->gdpr = true;
     }
 
     public function render()

@@ -24,6 +24,11 @@ class Consultation extends Model
         return $this->belongsTo(Office::class);
     }
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

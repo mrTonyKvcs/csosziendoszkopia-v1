@@ -3,6 +3,7 @@
 namespace App\Http\Traits;
 use App\Models\Applicant;
 use App\Models\Appointment;
+use App\Models\Consultation;
 use Carbon\Carbon;
 
 trait AppointmentTrait {
@@ -21,19 +22,20 @@ trait AppointmentTrait {
 
     public function createAppointment($applicantId)
     {
-		if (isset($this->appointment['start_at'])) {
-			$times = [$this->appointment['start_at'], $this->appointment['end_at']];
-		} else {
-			$times = explode(',', $this->appointment);
-		}
+        $consultationId = is_object($this->consultation) ? $this->consultation->id : $this->consultation;
 
-        return Appointment::create([
-            'consultation_id' => is_object($this->consultation) ? $this->consultation->id : $this->consultation,
+        $appointment = Appointment::query()
+            ->where('consultation_id', $consultationId)
+            ->where('start_at', $this->appointment['start_at'])
+            ->where('end_at', $this->appointment['end_at'])
+            ->first();
+
+        $appointment->update([
             'medical_examination_id' => $this->medicalExaminationId,
             'applicant_id' => $applicantId,
-            'start_at' => $times[0],
-            'end_at' => $times[1]
         ]);
+
+        return $appointment;
     }
 
     public function exportToday($consultation, $columns, $data)

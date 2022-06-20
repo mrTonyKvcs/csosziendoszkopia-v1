@@ -153,6 +153,13 @@ class PaymentController extends Controller
                 ->where('order_ref', $result['o'])
                 ->firstOrFail();
 
+            $appointment = Appointment::find($payment->paymentable->id);
+
+            $appointment->update([
+                'medical_examination_id' => null,
+                'applicant_id' => null
+            ]);
+
             switch ($result['e']) {
                 case 'CANCEL':
                     $payment->update(['status' => Status::CANCEL_PAYMENT]);
