@@ -7,6 +7,8 @@ use App\Http\Traits\AppointmentTrait;
 use App\Models\Appointment;
 use App\Models\Consultation;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ConsultationExport;
 
 class Show extends Component
 {
@@ -35,38 +37,8 @@ class Show extends Component
 
         $consultation = $this->consultation;
         $data = $this->appointments;
-        $columns = $this->columns;
 
-        $fileName = \Str::slug($consultation->name) . '.csv';
-
-        $headers = array(
-            "Content-type"        => "text/csv",
-            "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma"              => "no-cache",
-            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-            "Expires"             => "0"
-        );
-
-        $callback = function() use($data, $columns, $consultation) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
-
-            foreach ($data as $item) {
-                $row['consultation']  = $consultation->name;
-                $row['medicalExamination']    = $item->medicalExamination->name;
-                $row['start']    = $item->start_at;
-                $row['end']  = $item->end_at;
-                $row['applicant_name']  = $item->applicant->name;
-                $row['social_security_number']  = $item->applicant->social_security_number;
-                $row['control']  = '-';
-
-                fputcsv($file, array($row['consultation'], $row['medicalExamination'], $row['start'], $row['end'], $row['applicant_name'], $row['social_security_number'], $row['control']));
-            }
-
-            fclose($file);
-        };
-
-        return response()->stream($callback, 200, $headers);
+        return Excel::download(new ConsultationExport($data), \Str::slug($consultation->name) . '.xlsx');
     }
 
     public function blockAndDelete($appointment)
