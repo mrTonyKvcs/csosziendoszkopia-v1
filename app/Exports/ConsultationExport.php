@@ -30,7 +30,7 @@ class ConsultationExport implements FromCollection, WithMapping, WithHeadings
             'Páciens neve',
             'Taj-száma',
             'Telefonszám',
-            'Kontroll vizsgálat'
+            // 'Kontroll vizsgálat'
         ];
     }
 
@@ -49,13 +49,13 @@ class ConsultationExport implements FromCollection, WithMapping, WithHeadings
     {
         return [
             $item->consultation->name,
-            $item->medicalExamination->name,
+            $item->medicalExamination->name ?? null,
             $item->start_at,
             $item->end_at,
-            $item->applicant->name,
-            $item->applicant->social_security_number,
-            $item->applicant->phone,
-            $this->checkControlExamination($item->id, $item->applicant->id)
+            $item->applicant->name ?? null,
+            $item->applicant->social_security_number ?? null,
+            $item->applicant->phone ?? null,
+            // $this->checkControlExamination($item->id ?? null, $item->applicant->id ?? null)
         ];
     }
 }

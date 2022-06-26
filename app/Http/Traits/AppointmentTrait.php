@@ -97,6 +97,6 @@ trait AppointmentTrait {
 
         return $appointments->isEmpty()
             ? 'Nem'
-            : $appointments->first()->consultation->day . ': ' . $appointments->first()->start_at . ' | '.  $appointments->first()->medicalExamination->name;
+            : $appointments->first()->consultation->day . ': ' . $appointments->first()->start_at . ' | '.  $appointments->first()->medicalExamination?->name;
     }
 }
