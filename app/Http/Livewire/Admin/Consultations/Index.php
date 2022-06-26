@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Consultations;
 
+use App\Exports\ConsultationExport;
 use App\Http\Traits\AppointmentTrait;
 use App\Http\Traits\ConsultationTrait;
 use App\Models\Office;
@@ -9,6 +10,7 @@ use App\Models\Consultation;
 use App\Models\Type;
 use App\Models\User;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Index extends Component
 {
@@ -83,39 +85,41 @@ class Index extends Component
         $consultation = Consultation::find($consultationId);
 
         $data = $consultation->appointments;
-        $columns = ['Rendelés', 'Vizsgálat típusa',  'Vizsgálat kezdete', 'Vizsgálat vége','Páciens neve', 'Taj-száma', 'Telefonszám','Kontroll vizsgálat'];
+
+        return Excel::download(new ConsultationExport($data), \Str::slug($consultation->name) . '.xlsx');
+        // $columns = ['Rendelés', 'Vizsgálat típusa',  'Vizsgálat kezdete', 'Vizsgálat vége','Páciens neve', 'Taj-száma', 'Telefonszám','Kontroll vizsgálat'];
 
 
-        $fileName = \Str::slug($consultation->name) . '.csv';
+        // $fileName = \Str::slug($consultation->name) . '.csv';
 
-        $headers = array(
-            "Content-type"        => "text/csv; charset=utf-8",
-            "Content-Disposition" => "attachment; filename=$fileName",
-            "Pragma"              => "no-cache",
-            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-            "Expires"             => "0"
-        );
+        // $headers = array(
+        //     "Content-type"        => "text/csv; charset=utf-8",
+        //     "Content-Disposition" => "attachment; filename=$fileName",
+        //     "Pragma"              => "no-cache",
+        //     "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+        //     "Expires"             => "0"
+        // );
 
-        $callback = function() use($data, $columns, $consultation) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
+        // $callback = function() use($data, $columns, $consultation) {
+        //     $file = fopen('php://output', 'w');
+        //     fputcsv($file, $columns);
 
-            foreach ($data as $item) {
-                $row['consultation']  = $consultation->name;
-                $row['medicalExamination']    = $item->medicalExamination->name;
-                $row['start']    = $item->start_at;
-                $row['end']  = $item->end_at;
-                $row['applicant_name']  = $item->applicant->name;
-                $row['social_security_number']  = $item->applicant->social_security_number;
-                $row['phone'] = $item->applicant->phone;
-                $row['control']  = $this->checkControlExamination($item->id, $item->applicant->id);
+        //     foreach ($data as $item) {
+        //         $row['consultation']  = $consultation->name;
+        //         $row['medicalExamination']    = $item->medicalExamination->name;
+        //         $row['start']    = $item->start_at;
+        //         $row['end']  = $item->end_at;
+        //         $row['applicant_name']  = $item->applicant->name;
+        //         $row['social_security_number']  = $item->applicant->social_security_number;
+        //         $row['phone'] = $item->applicant->phone;
+        //         $row['control']  = $this->checkControlExamination($item->id, $item->applicant->id);
 
-                fputcsv($file, array($row['consultation'], $row['medicalExamination'], $row['start'], $row['end'], $row['applicant_name'], $row['social_security_number'], $row['phone'], $row['control']));
-            }
+        //         fputcsv($file, array($row['consultation'], $row['medicalExamination'], $row['start'], $row['end'], $row['applicant_name'], $row['social_security_number'], $row['phone'], $row['control']));
+        //     }
 
-            fclose($file);
-        };
-        return response()->stream($callback, 200, $headers);
+        //     fclose($file);
+        // };
+        // return response()->stream($callback, 200, $headers);
     }
 
     public function confirmDeletion($id) 
