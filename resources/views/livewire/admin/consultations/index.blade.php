@@ -22,7 +22,7 @@
             <x-slot name="footer">
                 {{-- <button --}}
                     {{-- type="submit" --}}
-                    {{-- class="inline-flex items-center px-4 py-2 font-medium text-white bg-green-600 border border-transparent text-md order-0 shadow-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 hover:bg-green-700 focus:ring-green-500" --}}
+                    {{-- class="inline-flex items-center px-4 py-2 font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm text-md order-0 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 hover:bg-green-700 focus:ring-green-500" --}}
                     {{-- > --}}
                     {{-- Új rendelés létrehozása --}}
                     {{-- </button> --}}
@@ -51,37 +51,24 @@
                         @foreach($this->consultations as $consultation)
 
                             <tr>
+
                                 <td class="px-6 py-3 text-sm font-medium text-center text-gray-900 max-w-0 whitespace-nowrap">
                                     {{ $loop->index + 1 }}
                                 </td>
-								<td class="px-6 py-3 text-sm font-medium text-center text-gray-900 max-w-0 whitespace-nowrap">
-                                    <div class="flex items-center space-x-3 lg:pl-2">
-                                        <div class="truncate">
-                                            <span>
+                                <td class="px-6 py-3 text-sm font-medium text-center text-gray-500">
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <div class="flex flex-col items-center flex-shrink-0 -space-x-1">
+                                            <a href="{{ route('admin.consultations.show', $consultation->id) }}" class="font-bold truncate text-md hover:text-gray-600">
+                                                <span>{{ $consultation->nameWithoutTime }}</span>
+                                            </a>
+                                            <span class="py-3 font-bold">
                                                 {{ $consultation->user->name }}
                                             </span>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-6 py-3 text-sm font-medium text-center text-gray-900 max-w-0 whitespace-nowrap">
-                                    <div class="flex items-center space-x-3 lg:pl-2">
-                                        <div class="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-pink-600" aria-hidden="true"></div>
-                                        <div class="truncate">
-                                            <span>
-                                                {{ $consultation->office->name }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-3 text-sm font-medium text-center text-gray-500">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="flex flex-shrink-0 -space-x-1">
-                                            <a href="#" class="truncate hover:text-gray-600">
-                                                <span>{{ $consultation->nameWithoutTime }}</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
+                                
+                                
                                 <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{ $consultation->open }}</td>
                                 <td class="hidden px-6 py-3 text-sm text-center text-gray-500 md:table-cell whitespace-nowrap">{{$consultation->close }}</td>
                                 <td class="pr-6">
@@ -112,7 +99,7 @@
                                             From: "transform opacity-100 scale-100"
                                             To: "transform opacity-0 scale-95"
                                         -->
-                                        <div x-show="itemDropdown === true" class="absolute top-0 z-10 w-48 mx-3 mt-1 bg-white shadow-lg origin-top-right right-7 rounded-md ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="project-options-menu-0-button" tabindex="-1">
+                                        <div x-show="itemDropdown === true" class="absolute top-0 z-10 w-48 mx-3 mt-1 origin-top-right bg-white divide-y divide-gray-200 rounded-md shadow-lg right-7 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="project-options-menu-0-button" tabindex="-1">
                                             <div class="py-1" role="none">
                                                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                                                 <a href="{{ route('admin.consultations.show', $consultation->id) }}" class="flex items-center px-4 py-2 text-sm text-gray-700 group" role="menuitem" tabindex="-1" id="project-options-menu-0-item-0">

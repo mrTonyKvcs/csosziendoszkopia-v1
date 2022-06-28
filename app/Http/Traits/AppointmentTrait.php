@@ -38,6 +38,22 @@ trait AppointmentTrait {
         return $appointment;
     }
 
+    public function addNewApplicantToAppointment()
+    {
+        $applicant = Applicant::create([
+            'name'  => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'social_security_number' =>$this->socialSecurityNumber
+        ]);
+
+        $appointment = Appointment::find($this->activeAppointment->id);
+        $appointment->update([
+            'medical_examination_id' => $this->activeMedicalExamination,
+            'applicant_id' => $applicant->id
+        ]);
+    }
+
     public function exportToday($consultation, $columns, $data)
     {
         $fileName = \Str::slug($consultation->name) . '.csv';

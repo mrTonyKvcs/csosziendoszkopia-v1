@@ -3,14 +3,16 @@
 ])
 
 <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6">
-        <h3 class="flex items-center text-lg font-medium leading-6 text-gray-900">
+	@if(!$admin)
+		<div class="px-4 py-5 sm:px-6">
+			<h3 class="flex items-center text-lg font-medium leading-6 text-gray-900">
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            <span class="ml-3">Személyes adatok (2/3)</span></h3>
-    </div>
+				<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+				</svg>
+				<span class="ml-3">Személyes adatok (2/3)</span></h3>
+		</div>
+	@endif
     <div class="grid grid-cols-6 gap-6 px-4 py-5 border-t border-gray-200 sm:p-0">
 
             <div class="col-span-6 sm:col-span-2">
@@ -29,16 +31,16 @@
 
             <div class="col-span-6 sm:col-span-2">
 				<small class="text-lg">Telefonszám</small>
-                <input type="text" name="phone" wire:model="phone" id="phone" autocomplete="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+                <input type="text" name="phone" wire:model="phone" id="phone" autocomplete="phone" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
                 @error('phone') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-			@if(!$admin)
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Taj-szám</small>
 					<input type="text" name="socialSecurityNumber" wire:model="socialSecurityNumber" id="social_security_number" autocomplete="social_security_number" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					@error('socialSecurityNumber') <span class="error">{{ $message }}</span> @enderror
 				</div>
+			@if(!$admin)
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Irányítószám</small>
 					<input type="text" name="zip" wire:model="zip" id="zip" autocomplete="zip" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
@@ -74,6 +76,7 @@
 					@error('gdpr') <span class="error">{{ $message }}</span> @enderror
 				</div>
 		</div>
+		
 	@endif
 </div>
 

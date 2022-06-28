@@ -89,8 +89,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('paciensek', ApplicantIndex::class)
         ->name('admin.applicant.index');
 
-    Route::get('uj-idopont', AdminAppointments::class)
-        ->name('admin.appointment');
+    // Route::get('uj-idopont', AdminAppointments::class)
+    //     ->name('admin.appointment');
 });
 
 Route::middleware('auth')->group(function () {

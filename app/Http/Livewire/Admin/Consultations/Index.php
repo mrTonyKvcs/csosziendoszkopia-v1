@@ -16,7 +16,7 @@ class Index extends Component
 {
     use ConsultationTrait; use AppointmentTrait;
 
-    public $columns = ['Orvos', 'Helye', 'Napja', 'Kezdés', 'Vége'];
+    public $columns = ['Napja', 'Kezdés', 'Vége'];
     public $consultations = [];
     public $createForm = false;
     public $confirmingItemDeletion = false;
@@ -46,7 +46,7 @@ class Index extends Component
     public function mount()
     {
         $this->consultations = Consultation::query()
-            ->orderByDesc('day')
+            ->orderBy('day')
             ->get();
 
         $this->data['doctors'] = User::query()
@@ -84,7 +84,7 @@ class Index extends Component
         // $this->exportToday($this->consultation, $this->columns, $this->appointments);
         $consultation = Consultation::find($consultationId);
 
-        $data = $consultation->appointments;
+        $data = $consultation->appointments()->orderBy('start_at')->get();
 
         return Excel::download(new ConsultationExport($data), \Str::slug($consultation->name) . '.xlsx');
     }

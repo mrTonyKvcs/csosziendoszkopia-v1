@@ -9,6 +9,8 @@ use App\Models\Consultation;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ConsultationExport;
+use App\Models\MedicalExamination;
+use Illuminate\Support\Facades\DB;
 
 class Show extends Component
 {
@@ -17,7 +19,14 @@ class Show extends Component
     public $appointments;
     public $consultation;
     public $createForm = false;
-    public $columns = ['Rendelés', 'Vizsgálat típusa',  'Vizsgálat kezdete', 'Vizsgálat vége','Páciens neve', 'Taj-száma', 'Kontroll vizsgálat'];
+    public $columns = ['Vizsgálat kezdete', 'Vizsgálat vége', 'Vizsgálat típusa', 'Páciens neve', 'Taj-száma'];
+    public $name;
+    public $email;
+    public $phone;
+    public $socialSecurityNumber;
+    public $activeAppointment;
+    public $medicalExaminations = [];
+    public $activeMedicalExamination;
 
     public function mount(Consultation $consultation)
     {
@@ -25,10 +34,58 @@ class Show extends Component
         $this->appointments = $this->consultation->appointments()->orderBy('start_at')->get();
     }
 
+    protected $rules = [
+        'activeMedicalExamination' => 'required',
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+    ];
+
     public function render()
     {
         return view('livewire.admin.consultations.show')
             ->layout('components.layouts.admin');
+    }
+
+    public function showApplicantForm($appointmentId)
+    {
+        $this->name = '';
+        $this->email = '';
+        $this->phone = '';
+        $this->socialSecurityNumber = '';
+        $this->activeAppointment = null;
+        $this->medicalExaminations = [];
+        $this->activeMedicalExamination = [];
+        $this->activeAppointment = Appointment::find($appointmentId);
+        $medicalExaminationsIds = DB::table('doctor_medical_examination')
+            ->where('user_id', $this->activeAppointment->consultation->user_id)
+            ->where('type', $this->activeAppointment->consultation->type_id)
+            ->pluck('medical_examination_id')
+            ->toArray();
+
+        $this->medicalExaminations = MedicalExamination::whereIn('id', $medicalExaminationsIds)->get();
+        
+        $this->createForm = true;
+    }
+    
+    public function addApplicantToAppointment()
+    {
+        $this->validate();
+
+        $this->addNewApplicantToAppointment();
+
+        $this->createForm = false;
+        $this->name = '';
+        $this->email = '';
+        $this->phone = '';
+        $this->socialSecurityNumber = '';
+        $this->activeAppointment = null;
+        $this->medicalExaminations = [];
+        $this->activeMedicalExamination = [];
+        $this->appointments = [];
+        $this->appointments = $this->consultation->appointments()->orderBy('start_at')->get();
+
+        session()->flash('success', 'Sikeresen felvitte az adatokat!');
     }
 
     public function export()
@@ -39,6 +96,19 @@ class Show extends Component
         $data = $this->appointments;
 
         return Excel::download(new ConsultationExport($data), \Str::slug($consultation->name) . '.xlsx');
+    }
+
+    public function cancelAppointment($appointmentId)
+    {
+        $appointment = Appointment::find($appointmentId);
+        
+        $appointment->update([
+            'medical_examination_id' => null,
+            'applicant_id' => null
+        ]);
+        $this->appointments = [];
+        $this->appointments = $this->consultation->appointments()->orderBy('start_at')->get();
+        session()->flash('success', 'Sikeresen megtörtént az időpont lemondása!');
     }
 
     public function blockAndDelete($appointment)

@@ -111,7 +111,7 @@
                                 Kezdőlap
                                 </a>
 
-                                {{-- <a href="#" class="flex items-center px-2 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md"> --}}
+                                {{-- <a href="#" class="flex items-center px-2 py-2 text-base font-medium leading-5 text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 group"> --}}
                                     {{-- <!-- Heroicon name: outline/view-list --> --}}
                                     {{-- <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> --}}
                                     {{--     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /> --}}
@@ -139,21 +139,21 @@
                                 {{--     Teams --}}
                                 {{-- </h3> --}}
                                 {{-- <div class="mt-1 space-y-1" role="group" aria-labelledby="teams-headline"> --}}
-                                {{--     <a href="#" class="flex items-center px-3 py-2 text-base font-medium text-gray-600 group leading-5 rounded-md hover:text-gray-900 hover:bg-gray-50"> --}}
+                                {{--     <a href="#" class="flex items-center px-3 py-2 text-base font-medium leading-5 text-gray-600 rounded-md group hover:text-gray-900 hover:bg-gray-50"> --}}
                                 {{--         <span class="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" aria-hidden="true"></span> --}}
                                 {{--         <span class="truncate"> --}}
                                 {{--             Engineering --}}
                                 {{--         </span> --}}
                                 {{--     </a> --}}
                                 {{--  --}}
-                                {{--     <a href="#" class="flex items-center px-3 py-2 text-base font-medium text-gray-600 group leading-5 rounded-md hover:text-gray-900 hover:bg-gray-50"> --}}
+                                {{--     <a href="#" class="flex items-center px-3 py-2 text-base font-medium leading-5 text-gray-600 rounded-md group hover:text-gray-900 hover:bg-gray-50"> --}}
                                 {{--         <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span> --}}
                                 {{--         <span class="truncate"> --}}
                                 {{--             Human Resources --}}
                                 {{--         </span> --}}
                                 {{--     </a> --}}
                                 {{--  --}}
-                                {{--     <a href="#" class="flex items-center px-3 py-2 text-base font-medium text-gray-600 group leading-5 rounded-md hover:text-gray-900 hover:bg-gray-50"> --}}
+                                {{--     <a href="#" class="flex items-center px-3 py-2 text-base font-medium leading-5 text-gray-600 rounded-md group hover:text-gray-900 hover:bg-gray-50"> --}}
                                 {{--         <span class="w-2.5 h-2.5 mr-4 bg-yellow-500 rounded-full" aria-hidden="true"></span> --}}
                                 {{--         <span class="truncate"> --}}
                                 {{--             Customer Success --}}
@@ -208,7 +208,7 @@
                                 From: "transform opacity-100 scale-100"
                                 To: "transform opacity-0 scale-95"
                             -->
-                            <div x-show="dropdown === true" class="absolute left-0 right-0 z-10 mx-3 mt-1 bg-white shadow-lg origin-top rounded-md ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-button" tabindex="-1">
+                            <div x-show="dropdown === true" class="absolute left-0 right-0 z-10 mx-3 mt-1 origin-top bg-white divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-button" tabindex="-1">
                                 {{-- <div class="py-1" role="none"> --}}
                                     {{-- <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" --> --}}
                                     {{-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="options-menu-item-0">View profile</a> --}}
@@ -237,7 +237,7 @@
                             {{--             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /> --}}
                             {{--         </svg> --}}
                             {{--     </div> --}}
-                            {{--     <input type="text" name="search" id="search" class="block w-full border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 pl-9 sm:text-sm rounded-md" placeholder="Search"> --}}
+                            {{--     <input type="text" name="search" id="search" class="block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 pl-9 sm:text-sm" placeholder="Search"> --}}
                             {{-- </div> --}}
                         {{-- </div> --}}
                         <!-- Navigation -->
@@ -256,7 +256,7 @@
                                     Kezdőlap
                                 </a>
 
-                                {{-- <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 group rounded-md"> --}}
+                                {{-- <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 group"> --}}
                                     {{-- <!-- Heroicon name: outline/view-list --> --}}
                                     {{-- <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> --}}
                                     {{--     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /> --}}
@@ -277,13 +277,13 @@
 </svg>
                                     Páciensek
                                 </a>
-								<a href="{{ route('admin.appointment') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'uj-idopont' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
+								{{-- <a href="{{ route('admin.appointment') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'uj-idopont' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
 									<!-- Heroicon name: outline/clock -->
 									<svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="gray">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
 									</svg>
 									Új időpont
-								</a>
+								</a> --}}
                             </div>
                             {{-- <div class="mt-8"> --}}
                                 {{-- <!-- Secondary navigation --> --}}
@@ -291,21 +291,21 @@
                                 {{--     Teams --}}
                                 {{-- </h3> --}}
                                 {{-- <div class="mt-1 space-y-1" role="group" aria-labelledby="teams-headline"> --}}
-                                {{--     <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 group rounded-md hover:text-gray-900 hover:bg-gray-50"> --}}
+                                {{--     <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md group hover:text-gray-900 hover:bg-gray-50"> --}}
                                 {{--         <span class="w-2.5 h-2.5 mr-4 bg-indigo-500 rounded-full" aria-hidden="true"></span> --}}
                                 {{--         <span class="truncate"> --}}
                                 {{--             Engineering --}}
                                 {{--         </span> --}}
                                 {{--     </a> --}}
                                 {{--  --}}
-                                {{--     <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 group rounded-md hover:text-gray-900 hover:bg-gray-50"> --}}
+                                {{--     <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md group hover:text-gray-900 hover:bg-gray-50"> --}}
                                 {{--         <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span> --}}
                                 {{--         <span class="truncate"> --}}
                                 {{--             Human Resources --}}
                                 {{--         </span> --}}
                                 {{--     </a> --}}
                                 {{--  --}}
-                                {{--     <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 group rounded-md hover:text-gray-900 hover:bg-gray-50"> --}}
+                                {{--     <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md group hover:text-gray-900 hover:bg-gray-50"> --}}
                                 {{--         <span class="w-2.5 h-2.5 mr-4 bg-yellow-500 rounded-full" aria-hidden="true"></span> --}}
                                 {{--         <span class="truncate"> --}}
                                 {{--             Customer Success --}}
@@ -352,7 +352,7 @@
                                     From: "transform opacity-100 scale-100"
                                     To: "transform opacity-0 scale-95"
                                 -->
-                                <div x-show="dropdown === true" class="absolute right-0 w-48 mt-2 bg-white shadow-lg origin-top-right rounded-md ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                <div x-show="dropdown === true" class="absolute right-0 w-48 mt-2 origin-top-right bg-white divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                     <div class="py-1" role="none">
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="options-menu-item-5">Kijelentkezés</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

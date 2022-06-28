@@ -40,7 +40,7 @@ class Search extends Component
     {
         $consultation = Consultation::find($consultationId);
 
-        $data = $consultation->appointments;
+        $data = $consultation->appointments()->orderBy('start_at')->get();
 
         return Excel::download(new ConsultationExport($data), \Str::slug($consultation->name) . '.xlsx');
     }

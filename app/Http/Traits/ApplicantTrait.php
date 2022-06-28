@@ -11,7 +11,6 @@ use Carbon\Carbon;
 
 trait ApplicantTrait 
 {
-
     public function checkSocialSecurityNumber($socialSecurityNumber)
     {
         $checkSocialSecurityNumber = Applicant::where('social_security_number', $socialSecurityNumber)
