@@ -45,9 +45,7 @@ class Index extends Component
 
     public function mount()
     {
-        $this->consultations = Consultation::query()
-            ->orderBy('day')
-            ->get();
+        $this->consultations = $this->getActiveConsultations();
 
         $this->data['doctors'] = User::query()
             ->doctors()
