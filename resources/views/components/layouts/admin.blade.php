@@ -46,7 +46,7 @@
             }
             ```
         -->
-        <div x-data="{sidebar: false, dropdown: false}"  class="flex h-screen overflow-hidden bg-white">
+        <div x-data="{sidebar: false, dropdown: false}"  class="flex h-screen bg-white">
             <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
             <div x-show="sidebar === true" class="fixed inset-0 z-40 flex lg:hidden" role="dialog" aria-modal="true">
                 <!--
@@ -319,7 +319,7 @@
             </div>
             
             <!-- Main column -->
-            <div class="flex flex-col flex-1 w-0 overflow-hidden">
+            <div class="flex flex-col flex-1 w-0">
                 <div class="relative z-10 flex flex-shrink-0 h-16 bg-white border-b border-gray-200 lg:hidden">
                     <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
                     <button @click="sidebar = true" class="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden">
