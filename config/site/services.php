@@ -53,7 +53,7 @@ return [
             ],
             [
                 'text'  => 'További alkalmak (összesen)',
-                'price' => 31000,
+                'price' => 12000,
             ]
         ]
     ],

@@ -42,11 +42,11 @@
                 <div class="col-lg-9 col-md-9 col-12">
                     <div class="widget-main">
                         <!-- Single Widget -->
-                        <div class="single-widget">
+                        {{-- <div class="single-widget">
                             <i class="icofont-ui-email"></i>
                             <p>Email</p>
                             <h4><a href="mailto:csosziendoszkopia@gmail.com">csosziendoszkopia@gmail.com</a></h4>
-                        </div>
+                        </div> --}}
                         <!--/ End Single Widget -->
                         <!-- Single Widget -->
                         {{--<div class="single-widget">--}}

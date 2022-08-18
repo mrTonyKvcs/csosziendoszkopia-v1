@@ -18,6 +18,7 @@
 
     <section class="pricing-table section">
 			<div class="container">
+                <p class="text-lg text-center">Áraink Szeptember 1.-től érvényesek. <strong>Időpontot csak online tud foglalni, az <a style="color: #1a76d1" class="font-bold" href="{{ route('appointments.index') }}">"Online időpontfoglalás"</a> menüpont alatt.</strong></p>
 				<div class="row">
 					<!-- Single Table -->
                     @foreach ($prices as $service)

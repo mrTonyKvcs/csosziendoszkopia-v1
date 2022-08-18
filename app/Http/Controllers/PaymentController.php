@@ -118,7 +118,7 @@ class PaymentController extends Controller
             'transaction_id' => $trx->returnData['transactionId'],
             'order_ref' => $trx->returnData['orderRef']
         ]);
-        
+
         return redirect()->to($trx->returnData['paymentUrl']);
     }
 
@@ -143,13 +143,12 @@ class PaymentController extends Controller
                 ->where('transaction_id', $result['t'])
                 ->where('order_ref', $result['o'])
                 ->firstOrFail();
-            
+
             $payment->update(['status' => Status::END_PAYMENT]);
-            
+
             $appointment = $payment->paymentable;
 
-            $invoiceNumber = $this->createInvoice($appointment);
-            dd($invoiceNumber);
+            // $invoiceNumber = $this->createInvoice($appointment);
 
             return redirect()->route('payments.greeting', $appointment->id);
         } else {
@@ -169,7 +168,7 @@ class PaymentController extends Controller
                 case 'CANCEL':
                     $payment->update(['status' => Status::CANCEL_PAYMENT]);
                     break;
-                
+
                 case 'FAIL':
                     $payment->update(['status' => Status::FAIL_PAYMENT]);
                     break;

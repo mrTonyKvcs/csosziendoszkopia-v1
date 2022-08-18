@@ -20,13 +20,12 @@ class ConsultationExport implements FromCollection, WithMapping, WithHeadings
 
     /**
     * @return \Illuminate\Support\Collection
-    */ 
-    public function headings():array{
+    */
+    public function headings(): array
+    {
         return[
-            'Rendelés',
-            'Vizsgálat típusa', 
             'Vizsgálat kezdete',
-            'Vizsgálat vége',
+            'Vizsgálat típusa',
             'Páciens neve',
             'Taj-száma',
             'Telefonszám',
@@ -48,10 +47,8 @@ class ConsultationExport implements FromCollection, WithMapping, WithHeadings
     public function map($item): array
     {
         return [
-            $item->consultation->name,
-            $item->medicalExamination->name ?? null,
             $item->start_at,
-            $item->end_at,
+            $item->medicalExamination->name ?? null,
             $item->applicant->name ?? null,
             $item->applicant->social_security_number ?? null,
             $item->applicant->phone ?? null,

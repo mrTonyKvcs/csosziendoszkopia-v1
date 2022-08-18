@@ -32,8 +32,8 @@
 						</svg>
 					</div>
 					<div class="flex-1 ml-3 md:flex md:justify-between">
-						<p class="text-lg text-blue-700"><strong>Kedves Betegünk!</strong> <br>Amennyiben  oltási igazolvánnyal nem rendelkezik, a gyomor- és vastagbéltükrözés elvégzéséhez negatív PCR teszt bemutatása szükséges, mely a vizsgálat időpontjához viszonyítva 48 óránál nem lehet korábbi. 
-						</p>
+						<p class="text-lg text-blue-700"><strong>Kedves Betegünk!</strong> <br> Időpontot csak online tud foglalni. <br>Amennyiben  oltási igazolvánnyal nem rendelkezik, a gyomor- és vastagbéltükrözés elvégzéséhez negatív PCR teszt bemutatása szükséges, mely a vizsgálat időpontjához viszonyítva 48 óránál nem lehet korábbi. 
+							A rendelőben kötelező a maszk használata.</p>
 					</div>
 				</div>
 			</div>
