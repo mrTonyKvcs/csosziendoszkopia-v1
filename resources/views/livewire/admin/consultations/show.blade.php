@@ -3,8 +3,8 @@
     <main x-data="{createForm: @entangle('createForm')}" class="relative z-0 flex-1 min-h-screen overflow-y-auto focus:outline-none">
         <!-- Page title & actions -->
         <x-pages.header :actionButton="false">
-			Rendelés: {{ $consultation->name }} <br>
-			{{ $consultation->user->name }}
+			Rendelés: {{ $this->consultation }} <br>
+			{{ $this->doctor->name }}
         </x-pages.header>
 
         <x-session/>

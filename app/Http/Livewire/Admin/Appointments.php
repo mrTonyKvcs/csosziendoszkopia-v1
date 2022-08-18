@@ -17,7 +17,9 @@ use Illuminate\Validation\Rule;
 
 class Appointments extends Component
 {
-    use AppointmentTrait; use ApplicantTrait; use MailTrait;
+    use AppointmentTrait;
+    use ApplicantTrait;
+    use MailTrait;
 
     public $phase = 1;
     public $name;
@@ -38,10 +40,10 @@ class Appointments extends Component
     public $appointments = [];
     public $appointment;
     public $submitButton = false;
-	public $selectMedical = false;
-	public $selectDoctor = false;
-	public $selectConsultation = false;
-	public $selectAppointment = false;
+    public $selectMedical = false;
+    public $selectDoctor = false;
+    public $selectConsultation = false;
+    public $selectAppointment = false;
     public $info;
 
     // protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
@@ -81,10 +83,10 @@ class Appointments extends Component
 
         $appointment = $this->createAppointment($applicant->id);
 
-        $this->sendMessages($appointment, $applicant);
+        $this->sendMessages($appointment, $applicant, true);
 
         session()->flash('success', 'Sikeresen felvette az új időpontot!');
-		return redirect()->route('admin.appointment');
+        return redirect()->route('admin.appointment');
     }
 
     public function toggleSubmitButton()
@@ -94,7 +96,7 @@ class Appointments extends Component
 
     public function previousPhase()
     {
-        $this->phase != 1 
+        $this->phase != 1
             ? $this->phase--
             : null;
     }
@@ -105,35 +107,35 @@ class Appointments extends Component
             $this->validate();
         }
 
-        $this->phase != 3 
+        $this->phase != 3
             ? $this->phase++
             : null;
     }
 
-	public function setActiveMedical($id)
-	{
-		$this->medicalExamination = MedicalExamination::find($id);
-		$this->selectMedical = false;
-		$this->getDoctors();
-	}
+    public function setActiveMedical($id)
+    {
+        $this->medicalExamination = MedicalExamination::find($id);
+        $this->selectMedical = false;
+        $this->getDoctors();
+    }
 
-	public function setActiveDoctor($id)
-	{
-		$this->doctor = User::find($id);
-		$this->selectDoctor = false;
-		$this->getConsultations();
-	}
+    public function setActiveDoctor($id)
+    {
+        $this->doctor = User::find($id);
+        $this->selectDoctor = false;
+        $this->getConsultations();
+    }
 
-	public function setActiveConsultation($id)
-	{
-		$this->consultation = Consultation::find($id);
-		$this->selectConsultation = false;
-		$this->getAppointments();
-	}
+    public function setActiveConsultation($id)
+    {
+        $this->consultation = Consultation::find($id);
+        $this->selectConsultation = false;
+        $this->getAppointments();
+    }
 
-	public function setActiveAppointment($id)
-	{
-		$this->appointment = $this->appointments[$id];
-		$this->selectAppointment = false;
-	}
+    public function setActiveAppointment($id)
+    {
+        $this->appointment = $this->appointments[$id];
+        $this->selectAppointment = false;
+    }
 }

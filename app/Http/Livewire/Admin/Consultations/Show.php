@@ -10,11 +10,13 @@ use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ConsultationExport;
 use App\Models\MedicalExamination;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class Show extends Component
 {
-    use AppointmentTrait; use ApplicantTrait;
+    use AppointmentTrait;
+    use ApplicantTrait;
 
     public $appointments;
     public $consultation;
@@ -27,11 +29,21 @@ class Show extends Component
     public $activeAppointment;
     public $medicalExaminations = [];
     public $activeMedicalExamination;
+    public $day;
+    public $doctor;
 
-    public function mount(Consultation $consultation)
+    public function mount($doctor, $consultation)
     {
-        $this->consultation = $consultation;
-        $this->appointments = $this->consultation->appointments()->orderBy('start_at')->get();
+        $this->day = $consultation;
+        $this->doctor = User::find($doctor);
+        $this->appointments = Appointment::whereHas('consultation', function ($q) use ($consultation, $doctor) {
+            $q->where('day', $consultation)
+                ->whereHas('user', function ($q) use ($doctor) {
+                    $q->where('id', $doctor);
+                });
+        })->get();
+        // $this->consultation = $consultation;
+        // $this->appointments = $this->consultation->appointments()->orderBy('start_at')->get();
     }
 
     protected $rules = [
@@ -64,10 +76,10 @@ class Show extends Component
             ->toArray();
 
         $this->medicalExaminations = MedicalExamination::whereIn('id', $medicalExaminationsIds)->get();
-        
+
         $this->createForm = true;
     }
-    
+
     public function addApplicantToAppointment()
     {
         $this->validate();
@@ -83,31 +95,42 @@ class Show extends Component
         $this->medicalExaminations = [];
         $this->activeMedicalExamination = [];
         $this->appointments = [];
-        $this->appointments = $this->consultation->appointments()->orderBy('start_at')->get();
+        $consultation = $this->consultation;
+        $doctor = $this->doctor->id;
+        $this->appointments = Appointment::whereHas('consultation', function ($q) use ($consultation, $doctor) {
+            $q->where('day', $consultation)
+                ->whereHas('user', function ($q) use ($doctor) {
+                    $q->where('id', $doctor);
+                });
+        })->get();
 
         session()->flash('success', 'Sikeresen felvitte az adatokat!');
     }
 
     public function export()
     {
-        // $this->exportToday($this->consultation, $this->columns, $this->appointments);
-
-        $consultation = $this->consultation;
         $data = $this->appointments;
 
-        return Excel::download(new ConsultationExport($data), \Str::slug($consultation->name) . '.xlsx');
+        return Excel::download(new ConsultationExport($data), \Str::slug($this->day) . '.xlsx');
     }
 
     public function cancelAppointment($appointmentId)
     {
         $appointment = Appointment::find($appointmentId);
-        
+
         $appointment->update([
             'medical_examination_id' => null,
             'applicant_id' => null
         ]);
         $this->appointments = [];
-        $this->appointments = $this->consultation->appointments()->orderBy('start_at')->get();
+        $consultation = $this->consultation;
+        $doctor = $this->doctor->id;
+        $this->appointments = Appointment::whereHas('consultation', function ($q) use ($consultation, $doctor) {
+            $q->where('day', $consultation)
+                ->whereHas('user', function ($q) use ($doctor) {
+                    $q->where('id', $doctor);
+                });
+        })->get();
         session()->flash('success', 'Sikeresen megtörtént az időpont lemondása!');
     }
 

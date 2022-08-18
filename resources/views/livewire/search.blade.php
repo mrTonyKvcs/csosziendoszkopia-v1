@@ -1,6 +1,6 @@
 <div>
     <div x-data="{modal: false}" class="flex flex-col md:flex-row">
-        <button @click="modal = true" type="button" class="inline-flex items-center px-4 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 shadow-sm rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" w-full>
+        <button @click="modal = true" type="button" class="inline-flex items-center px-4 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" w-full>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -20,7 +20,7 @@
                     From: "opacity-100"
                     To: "opacity-0"
                 -->
-                <div @click="modal = false" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                <div @click="modal = false" class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
 
                 <!-- This element is to trick the browser into centering the modal contents. -->
                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -35,7 +35,7 @@
                     From: "opacity-100 translate-y-0 sm:scale-100"
                     To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 -->
-                <div class="inline-block w-full px-4 pt-5 pb-4 overflow-hidden text-left align-bottom bg-white rounded-lg shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:p-6">
+                <div class="inline-block w-full px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-xl sm:p-6">
                     <div>
                         <div class="flex justify-end">
                             <button @click="modal = false" class="flex mb-5 justify-items-end">
@@ -76,14 +76,14 @@
                                                 </div>
                                                 <div class="text-right">
                                                     @if ($item->is_black_listed)
-                                                        <button wire:click="unBlockedApplicant({{ $item['id'] }})" type="button" class="flex items-center px-4 py-2 mr-3 text-base font-medium text-white bg-green-500 border border-transparent order-0 shadow-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 sm:ml-3 hover:bg-green-700 focus:ring-green-500" role="menuitem" tabindex="-1" id="project-options-menu-0-item-3">
+                                                        <button wire:click="unBlockedApplicant({{ $item['id'] }})" type="button" class="flex items-center px-4 py-2 mr-3 text-base font-medium text-white bg-green-500 border border-transparent rounded-md shadow-sm order-0 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 sm:ml-3 hover:bg-green-700 focus:ring-green-500" role="menuitem" tabindex="-1" id="project-options-menu-0-item-3">
                                                             <!-- Heroicon name: solid/trash -->
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="white">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                                                             </svg>
                                                         </button>
                                                     @else
-                                                        <button wire:click="blockedApplicant({{ $item['id'] }})" type="button" class="flex items-center px-4 py-2 mr-3 text-base font-medium text-white bg-red-500 border border-transparent order-0 shadow-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 sm:ml-3 hover:bg-red-700 focus:ring-red-500" role="menuitem" tabindex="-1" id="project-options-menu-0-item-3">
+                                                        <button wire:click="blockedApplicant({{ $item['id'] }})" type="button" class="flex items-center px-4 py-2 mr-3 text-base font-medium text-white bg-red-500 border border-transparent rounded-md shadow-sm order-0 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 sm:ml-3 hover:bg-red-700 focus:ring-red-500" role="menuitem" tabindex="-1" id="project-options-menu-0-item-3">
                                                             <!-- Heroicon name: solid/trash -->
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
@@ -96,7 +96,7 @@
                                         @endforeach
                                     @endif
 
-                                    @if(count($rs['consultations']) > 0)
+                                    {{-- @if(count($rs['consultations']) > 0)
                                         <h3 class="mt-5 mb-2 font-bold">Rendelések</h3>
                                         <div class="border border-gray-200"></div>
                                         @foreach($rs['consultations'] as $item)
@@ -117,7 +117,7 @@
                                                 </a>
                                                 <button
                                                     wire:click="export({{ $item['id'] }})"
-                                                    class="flex items-center px-4 py-2 mr-3 text-base font-medium text-white bg-green-500 border border-transparent order-0 shadow-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 sm:ml-3 hover:bg-green-700 focus:ring-green-500"
+                                                    class="flex items-center px-4 py-2 mr-3 text-base font-medium text-white bg-green-500 border border-transparent rounded-md shadow-sm order-0 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:order-1 sm:ml-3 hover:bg-green-700 focus:ring-green-500"
                                                     >
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="border border-gray-200"></div>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
                                 @endempty
                             </div>
                         </div>

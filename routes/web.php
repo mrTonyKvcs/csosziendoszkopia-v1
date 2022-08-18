@@ -16,13 +16,13 @@ use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
 
 Route::get('payment-start', 'App\Http\Controllers\PaymentController@start')
-	->name('payment.start');
+    ->name('payment.start');
 
 Route::get('payment-back', 'App\Http\Controllers\PaymentController@back')
-	->name('payment.back');
+    ->name('payment.back');
 
 Route::post('payment-ipn', 'App\Http\Controllers\PaymentController@ipn')
-	->name('payment.ipn');
+    ->name('payment.ipn');
 
 Route::get('sikertelen-fizetes/{payment}', [
     'as' => 'pages.payment-error',
@@ -75,15 +75,14 @@ Route::get('password/confirm', Confirm::class)
     ->name('password.confirm');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-
     Route::get('/dashboard', Dashboard::class)
         ->name('home');
-        // ->name('admin.dashboard');
+    // ->name('admin.dashboard');
 
     Route::get('rendelesek', ConsultationsIndex::class)
         ->name('admin.consultations.index');
 
-    Route::get('rendelesek/{consultation}', ConsultationsShow::class)
+    Route::get('rendelesek/{doctor}/{consultation}', ConsultationsShow::class)
         ->name('admin.consultations.show');
 
     Route::get('paciensek', ApplicantIndex::class)

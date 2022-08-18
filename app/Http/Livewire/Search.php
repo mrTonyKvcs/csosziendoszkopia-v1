@@ -15,7 +15,8 @@ class Search extends Component
     use ApplicantTrait;
 
     public $searchTerm = '';
-    public $rs = ['applicants' => [], 'consultations' => []];
+    public $rs = ['applicants' => []];
+    // public $rs = ['applicants' => [], 'consultations' => []];
 
     public function render()
     {
@@ -25,12 +26,12 @@ class Search extends Component
                 ->orWhere('name', 'like', '%' . $this->searchTerm . '%')
                  ->get();
 
-            $this->rs['consultations'] = Consultation::query()
-                ->whereHas('office', function ($q) {
-                    $q->where('name', 'like', '%' . $this->searchTerm . '%');
-                })
-                ->orWhere('day', 'like', '%' . $this->searchTerm . '%')
-                ->get();
+            // $this->rs['consultations'] = Consultation::query()
+            //     ->whereHas('office', function ($q) {
+            //         $q->where('name', 'like', '%' . $this->searchTerm . '%');
+            //     })
+            //     ->orWhere('day', 'like', '%' . $this->searchTerm . '%')
+            //     ->get();
         }
 
         return view('livewire.search');

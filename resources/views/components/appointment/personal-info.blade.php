@@ -18,6 +18,7 @@
             <div class="col-span-6 sm:col-span-2">
 				<small class="text-lg">Név</small>
                 <input type="text" wire:model="name" id="name" autocomplete="given-name" class="block w-full p-2 mt-1 text-lg border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+				<small>Példa: Teszt Elek</small>
                 @error('name') <span class="error">{{ $message }}</span> @enderror
             </div>
 
@@ -25,6 +26,7 @@
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Email</small>
 					<input type="text" wire:model="email" id="email_address" autocomplete="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+					<small>Példa: pelda@gmail.com</small>
 					@error('email') <span class="error">{{ $message }}</span> @enderror
 				</div>
 			{{-- @endif --}}
@@ -32,28 +34,33 @@
             <div class="col-span-6 sm:col-span-2">
 				<small class="text-lg">Telefonszám</small>
                 <input type="text" name="phone" wire:model="phone" id="phone" autocomplete="phone" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+				<small>Példa: +36708880011</small>
                 @error('phone') <span class="error">{{ $message }}</span> @enderror
             </div>
 
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Taj-szám</small>
 					<input type="text" name="socialSecurityNumber" wire:model="socialSecurityNumber" id="social_security_number" autocomplete="social_security_number" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+					<small>Példa: 115652436</small>
 					@error('socialSecurityNumber') <span class="error">{{ $message }}</span> @enderror
 				</div>
 			@if(!$admin)
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Irányítószám</small>
 					<input type="text" name="zip" wire:model="zip" id="zip" autocomplete="zip" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+					<small>Példa: 6000</small>
 					@error('zip') <span class="error">{{ $message }}</span> @enderror
 				</div>
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Város</small>
+					<small>Példa: Kecskemét</small>
 					<input type="text" name="city" wire:model="city" id="city" autocomplete="city" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					@error('city') <span class="error">{{ $message }}</span> @enderror
 				</div>
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Utca és házszám</small>
 					<input type="text" name="street" wire:model="street" id="street" autocomplete="street" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+					<small>Példa: Példa utca 7.</small>
 					@error('street') <span class="error">{{ $message }}</span> @enderror
 				</div>
 			@endif

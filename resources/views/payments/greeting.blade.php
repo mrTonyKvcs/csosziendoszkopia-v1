@@ -8,7 +8,7 @@
                             <div class="title">
                                 <h3>Sikeres online fizetés és bejelentkezés!</h3>
                                 <p class="my-3" style="font-size: 22px;"><strong>SimplePay tranzakció azonosító:</strong> {{ $transactionId }}</p>
-                                <p class="my-3" style="font-size: 22px;">A megadott email címre küldjük az időponttal és a vizsgálattal kapcsolatos információkat</p>
+                                <p class="my-3" style="font-size: 22px;">A megadott email címre küldjük az időponttal és a vizsgálattal kapcsolatos információkat. (Előfordulhat hogy a promóciós mappába érkezik az email)</p>
                                 <a href="/" style="font-size: 22px color: #1A76D1;">Vissza a főoldalra</a>
                             </div>
                         </div>

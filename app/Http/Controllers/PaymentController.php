@@ -7,6 +7,7 @@ use App\Models\Applicant;
 use App\Models\Appointment;
 use App\Models\Payment;
 use App\Models\Status;
+use App\Http\Traits\InvoiceTrait;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -20,6 +21,7 @@ use Throwable;
 class PaymentController extends Controller
 {
     use MailTrait;
+    use InvoiceTrait;
 
     protected $config;
 
@@ -145,6 +147,9 @@ class PaymentController extends Controller
             $payment->update(['status' => Status::END_PAYMENT]);
             
             $appointment = $payment->paymentable;
+
+            $invoiceNumber = $this->createInvoice($appointment);
+            dd($invoiceNumber);
 
             return redirect()->route('payments.greeting', $appointment->id);
         } else {
