@@ -53,8 +53,8 @@
 				</div>
 				<div class="col-span-6 sm:col-span-2">
 					<small class="text-lg">Város</small>
-					<small>Példa: Kecskemét</small>
 					<input type="text" name="city" wire:model="city" id="city" autocomplete="city" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
+					<small>Példa: Kecskemét</small>
 					@error('city') <span class="error">{{ $message }}</span> @enderror
 				</div>
 				<div class="col-span-6 sm:col-span-2">
