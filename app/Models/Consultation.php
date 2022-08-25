@@ -37,7 +37,12 @@ class Consultation extends Model
     //Scopes
     public function scopeActive($query)
     {
-        return $query->where('day', '>=', now());
+        return $query->where('day', '>=', now()->format('Y-m-d'));
+    }
+
+    public function scopeArchive($query)
+    {
+        return $query->where('day', '<', now()->format('Y-m-d'));
     }
 
     //Accessors

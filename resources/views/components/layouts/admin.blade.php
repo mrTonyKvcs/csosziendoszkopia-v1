@@ -119,12 +119,19 @@
                                     {{-- My tasks --}}
                                 {{-- </a> --}}
 
-                                <a href="{{ route('admin.consultations.index') }}" class="flex items-center px-2 py-2 text-base  {{ request()->segment(2) == 'rendelesek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} hover:text-gray-200 hover:bg-gray-50 group leading-5 rounded-md uppercase font-light">
+                                <a href="{{ route('admin.consultations.index') }}" class="flex items-center px-2 py-2 text-base  {{ request()->segment(2) == 'rendelesek' && request()->segment(3) === null ? 'bg-blue-500 text-white' : 'text-blue-500' }} hover:text-gray-200 hover:bg-gray-50 group leading-5 rounded-md uppercase font-light">
                                     <!-- Heroicon name: outline/clock -->
                                     <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                     Rendelések
+                                </a>
+                                <a href="{{ route('admin.consultations.index', 'archive') }}" class="flex items-center px-2 py-2 text-base  {{ request()->segment(3) == 'archive' ? 'bg-blue-500 text-white' : 'text-blue-500' }} hover:text-gray-200 hover:bg-gray-50 group leading-5 rounded-md uppercase font-light">
+                                    <!-- Heroicon name: outline/clock -->
+                                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Archívum
                                 </a>
                                 <a href="{{ route('admin.applicant.index') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'paciensek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-200 hover:bg-gray-50 group leading-5 rounded-md uppercase">
                                     <!-- Heroicon name: outline/clock -->
@@ -263,12 +270,19 @@
                                     {{-- </svg> --}}
                                     {{-- My tasks --}}
                                 {{-- </a> --}}
-                            <a href="{{ route('admin.consultations.index') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'rendelesek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
+                            <a href="{{ route('admin.consultations.index') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'rendelesek' && request()->segment(3) === null ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
                                     <!-- Heroicon name: outline/clock -->
                                     <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="gray" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                     Rendelések
+                                </a>
+                                <a href="{{ route('admin.consultations.index', 'archive') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(3) == 'archive' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
+                                    <!-- Heroicon name: outline/clock -->
+                                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="gray" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Archívum
                                 </a>
                                 <a href="{{ route('admin.applicant.index') }}" class="flex items-center px-2 py-2 text-base {{ request()->segment(2) == 'paciensek' ? 'bg-blue-500 text-white' : 'text-blue-500' }} font-light hover:text-gray-900 hover:bg-gray-50 group leading-5 rounded-md uppercase">
                                     <!-- Heroicon name: outline/clock -->

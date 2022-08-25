@@ -18,6 +18,7 @@ class Show extends Component
     use AppointmentTrait;
     use ApplicantTrait;
 
+    public $archive = false;
     public $appointments;
     public $consultation;
     public $createForm = false;
@@ -34,6 +35,7 @@ class Show extends Component
 
     public function mount($doctor, $consultation)
     {
+        $this->archive = $consultation > now()->format('Y-m-d') ? false : true;
         $this->day = $consultation;
         $this->doctor = User::find($doctor);
         $this->appointments = Appointment::whereHas('consultation', function ($q) use ($consultation, $doctor) {

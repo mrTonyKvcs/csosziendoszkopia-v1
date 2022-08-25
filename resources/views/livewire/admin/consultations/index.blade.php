@@ -2,7 +2,7 @@
     {{-- The Master doesn't talk, he acts. --}}
     <main x-data="{createForm: @entangle('createForm')}" class="relative z-0 flex-1 min-h-screen overflow-y-auto focus:outline-none">
         <!-- Page title & actions -->
-        <x-pages.header :export="false">
+        <x-pages.header :export="false" :actionButton="$this->actionButton">
             <div class="flex flex-row items-center">
                 <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="gray" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

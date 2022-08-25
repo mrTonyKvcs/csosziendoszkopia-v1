@@ -79,6 +79,7 @@
                                                 aria-labelledby="project-options-menu-0-button"
                                                 tabindex="-1"
                                             >
+                                                @if (!$this->archive)
                                                 <div class="py-1" role="none">
                                                     <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                                                     @if(empty($appointment->applicant_id))
@@ -106,6 +107,7 @@
                                                         </button>
                                                     @endif
                                                 </div>
+                                                @endif
                                                 <div class="py-1" role="none">
                                                     @if(!empty($appointment->applicant_id))
                                                     <button wire:click="blockAndDelete({{ $appointment }})" type="button" class="flex items-center px-4 py-2 text-sm text-gray-700 group" role="menuitem" tabindex="-1" id="project-options-menu-0-item-3" @click="itemDropdown = false">
@@ -116,6 +118,7 @@
                                                         Tiltás
                                                     </button>
                                                     @else
+                                                @if (!$this->archive)
                                                     <button wire:click="delete({{ $appointment->id }})" type="button" class="flex items-center px-4 py-2 text-sm text-gray-700 group" role="menuitem" tabindex="-1" id="project-options-menu-0-item-3" @click="itemDropdown = false">
                                                         <!-- Heroicon name: solid/trash -->
                                                         <svg class="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -123,6 +126,7 @@
                                                         </svg>
                                                         Törlés
                                                     </button>
+                                                    @endif
                                                     @endif
                                                 </div>
                                             </div>

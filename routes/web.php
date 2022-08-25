@@ -79,7 +79,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         ->name('home');
     // ->name('admin.dashboard');
 
-    Route::get('rendelesek', ConsultationsIndex::class)
+    Route::get('rendelesek/{mode?}', ConsultationsIndex::class)
         ->name('admin.consultations.index');
 
     Route::get('rendelesek/{doctor}/{consultation}', ConsultationsShow::class)

@@ -10,6 +10,7 @@ use App\Models\Office;
 use App\Models\Consultation;
 use App\Models\Type;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -18,6 +19,8 @@ class Index extends Component
     use ConsultationTrait;
     use AppointmentTrait;
 
+    public $actionButton = true;
+    public $archive = false;
     public $columns = ['Napja'];
     public $consultations = [];
     public $createForm = false;
@@ -46,10 +49,17 @@ class Index extends Component
         'newConsultation.type_id' => 'required',
     ];
 
-    public function mount()
+    public function mount($mode = null)
     {
-        $this->doctorGroup = $this->getActiveConsultations()
-            ->groupBy(['user_id', 'day']);
+        if (empty($mode)) {
+            $this->doctorGroup = $this->getActiveConsultations()
+                ->groupBy(['user_id', 'day']);
+        } else {
+            $this->actionButton = false;
+            $this->mode = true;
+            $this->doctorGroup = $this->getArchiveConsultations()
+                ->groupBy(['user_id', 'day']);
+        }
 
         // $this->consultations = $this->getActiveConsultations()
         //     ->groupBy(['user_id', 'day']);
