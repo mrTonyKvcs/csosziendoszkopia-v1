@@ -11,7 +11,7 @@
 									<li class="day" style="font-size: 20px;"><i class="icofont-home"></i> <span>Kecskemét, Faragó Béla fasor 4, 6000</span></li>
 								</ul>
 							</div>
-                            <p class="mt-5 text-2xl text-white">Időpontot csak online tud foglalni, az <a style="" class="mt-5 text-2xl font-bold" href="{{ route('appointments.index') }}">"Online időpontfoglalás"</a> menüpont alatt. A rendelőben kötelező a maszk használata.</p>
+                            <p class="mt-5 text-2xl text-white">Időpontot online tud foglalni, az <a style="" class="mt-5 text-2xl font-bold" href="{{ route('appointments.index') }}">"Online időpontfoglalás"</a> menüpont alatt. A rendelőben kötelező a maszk használata.</p>
 						</div>
 						<div class="col-lg-6 col-md-6 col-12">
 							<div class="single-footer">

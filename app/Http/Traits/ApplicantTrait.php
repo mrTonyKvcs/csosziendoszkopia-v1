@@ -9,7 +9,7 @@ use App\Models\Applicant;
 use App\Models\Appointment;
 use Carbon\Carbon;
 
-trait ApplicantTrait 
+trait ApplicantTrait
 {
     public function checkSocialSecurityNumber($socialSecurityNumber)
     {
@@ -48,9 +48,9 @@ trait ApplicantTrait
             $this->appointment = null;
             $this->appointments = [];
 
-			$slug = isset($this->medicalExamination->slug)
-				? $this->medicalExamination->slug
-				: $this->medicalExamination;	
+            $slug = isset($this->medicalExamination->slug)
+                ? $this->medicalExamination->slug
+                : $this->medicalExamination;
 
             $medicalExamination = MedicalExamination::query()
                  ->whereSlug($slug)
@@ -71,18 +71,18 @@ trait ApplicantTrait
         $this->appointment = null;
         $this->appointments = [];
 
-		$slug = isset($this->medicalExamination->slug)
-			? $this->medicalExamination->slug
-			: $this->medicalExamination;	
-        
+        $slug = isset($this->medicalExamination->slug)
+            ? $this->medicalExamination->slug
+            : $this->medicalExamination;
 
-		$examination = MedicalExamination::query()
-			->where('slug', $slug)
-			->first();
 
-		$doctorId = isset($this->doctor->id)
-			? $this->doctor->id
-			: $this->doctor;	
+        $examination = MedicalExamination::query()
+            ->where('slug', $slug)
+            ->first();
+
+        $doctorId = isset($this->doctor->id)
+            ? $this->doctor->id
+            : $this->doctor;
 
         $typeId = DB::table('doctor_medical_examination')
             ->where('user_id', $doctorId)
@@ -91,26 +91,25 @@ trait ApplicantTrait
             ->type;
 
         $this->consultations = Consultation::query()
-			->where('type_id', $typeId)
+            ->where('type_id', $typeId)
             ->where('user_id', $doctorId)
             ->where('is_digital', $slug === 'on-line-konzultacio' ? 1 : 0)
-            ->where('day', '>', $this->medicalExaminationId === 2 ? now()->addWeek() : now())
+            ->where('day', '>', $this->medicalExaminationId === 2 ? now()->addDays(5) : now())
             ->whereHas('appointments', function ($q) {
                 $q->whereNull('applicant_id');
             })
             ->orderBy('day')
             ->orderBy('open')
             ->get();
-
     }
 
     public function getAppointments()
     {
         $this->appointments = [];
 
-		$consultationId = isset($this->consultation->id)
-			? $this->consultation->id
-			: $this->consultation;	
+        $consultationId = isset($this->consultation->id)
+            ? $this->consultation->id
+            : $this->consultation;
 
         $consultation = Consultation::find($consultationId);
 
