@@ -18,7 +18,7 @@
         <ul
             x-cloak
             x-show="open"
-            @click.outside="open = false"
+            @click.away="open = false"
             class="z-10 w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-lg"
             tabindex="-1"
             role="listbox"
@@ -26,6 +26,9 @@
             aria-activedescendant="listbox-option-3"
             >
             @foreach($this->consultations as $consultation)
+
+                @if ($this->checkType($consultation))
+                    
                 <li
 						wire:click="setActiveConsultation({{ $consultation->id }})"
                     class="relative py-2 pl-3 text-gray-900 cursor-default select-none pr-9" id="listbox-option-0" role="option">
@@ -44,6 +47,7 @@
                     @endif
                 @endempty
                 </li>
+                @endif
             @endforeach
         </ul>
     </div>

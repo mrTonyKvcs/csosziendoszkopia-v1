@@ -11,12 +11,16 @@ use Livewire\Component;
 use App\Models\Consultation;
 use App\Models\MedicalExamination;
 use App\Models\User;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class Appointments extends Component
 {
-    use AppointmentTrait; use ApplicantTrait; use MailTrait;
+    use AppointmentTrait;
+    use ApplicantTrait;
+    use MailTrait;
 
     public $phase = 1;
     public $name;
@@ -38,10 +42,10 @@ class Appointments extends Component
     public $appointments = [];
     public $appointment;
     public $submitButton = false;
-	public $selectMedical = false;
-	public $selectDoctor = false;
-	public $selectConsultation = false;
-	public $selectAppointment = false;
+    public $selectMedical = false;
+    public $selectDoctor = false;
+    public $selectConsultation = false;
+    public $selectAppointment = false;
     public $info;
 
     protected $listeners = ['getDoctors' => 'getDoctors', 'getConsultations' => 'getConsultations', 'getActiveMedicalExaminations' => 'getActiveMedicalExaminations', 'getAppointments' => 'getAppointments', 'toggleSubmitButton' => 'toggleSubmitButton'];
@@ -104,7 +108,7 @@ class Appointments extends Component
 
     public function previousPhase()
     {
-        $this->phase != 1 
+        $this->phase != 1
             ? $this->phase--
             : null;
     }
@@ -115,36 +119,66 @@ class Appointments extends Component
             $this->validate();
         }
 
-        $this->phase != 3 
+        $this->phase != 3
             ? $this->phase++
             : null;
     }
 
-	public function setActiveMedical($id)
-	{
-		$this->medicalExamination = MedicalExamination::find($id);
-		$this->selectMedical = false;
+    public function setActiveMedical($id)
+    {
+        $this->medicalExamination = MedicalExamination::find($id);
+        $this->selectMedical = false;
+        $this->selectConsultation = false;
+        $this->selectDoctor = false;
+        $this->consultations = [];
+        $this->consultation = null;
         $this->info = config('site.medical-examinations')[$this->medicalExamination->slug];
-		$this->getDoctors();
-	}
+        $this->getDoctors();
+    }
 
-	public function setActiveDoctor($id)
-	{
-		$this->doctor = User::find($id);
-		$this->selectDoctor = false;
-		$this->getConsultations();
-	}
+    public function setActiveDoctor($id)
+    {
+        $this->consultations = [];
+        $this->selectConsultation = false;
+        $this->doctor = User::find($id);
+        $this->consultation = null;
+        $this->selectDoctor = false;
+        $this->selectConsultation = false;
+        $this->getConsultations();
+    }
 
-	public function setActiveConsultation($id)
-	{
-		$this->consultation = Consultation::find($id);
-		$this->selectConsultation = false;
-		$this->getAppointments();
-	}
+    public function setActiveConsultation($id)
+    {
+        $this->consultations = [];
+        $this->consultation = null;
+        $this->consultation = Consultation::find($id);
+        $this->selectConsultation = false;
+        $this->getAppointments();
+    }
 
-	public function setActiveAppointment($id)
-	{
-		$this->appointment = $this->appointments[$id];
-		$this->selectAppointment = false;
-	}
+    public function setActiveAppointment($id)
+    {
+        $this->appointment = $this->appointments[$id];
+        $this->selectAppointment = false;
+    }
+
+    public function checkType($consultation)
+    {
+        Artisan::call('view:clear');
+        $rs = DB::table('doctor_medical_examination')
+            ->where('medical_examination_id', $this->medicalExaminationId)
+            ->where('user_id', $this->doctor->id)
+            ->where('type', $consultation->type_id)
+            ->first();
+
+        if ($rs->user_id != $consultation->user_id) {
+            return false;
+        }
+
+        if (empty($rs)) {
+            return false;
+        }
+
+        return true;
+    }
 }
