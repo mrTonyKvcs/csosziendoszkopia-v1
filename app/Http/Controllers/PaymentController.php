@@ -11,6 +11,7 @@ use App\Http\Traits\InvoiceTrait;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Laravel\SerializableClosure\Signers\Hmac;
 use PhpParser\Node\Stmt\TryCatch;
 use SimplePay\SimplePayStart;
@@ -150,6 +151,8 @@ class PaymentController extends Controller
 
             // $invoiceNumber = $this->createInvoice($appointment);
 
+            $this->sendMessages($appointment, $appointment->applicant);
+
             return redirect()->route('payments.greeting', $appointment->id);
         } else {
             $payment = Payment::query()
@@ -210,8 +213,6 @@ class PaymentController extends Controller
     public function greeting(Appointment $appointment)
     {
         $transactionId = $appointment->payment->transaction_id;
-
-        $this->sendMessages($appointment, $appointment->applicant);
 
         return view('payments.greeting', [
             'appointment'   => $appointment,
