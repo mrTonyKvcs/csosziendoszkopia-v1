@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Mail;
 
 trait MailTrait
 {
-    public function sendMessages($appointment, $applicant, $invoiceNumber, $admin = false)
+    public function sendMessages($appointment, $applicant, $invoiceNumber = null, $admin = false)
     {
         $applicant->doctorName = $appointment->consultation->user->name;
         $applicant->appointment = $appointment->consultation->nameWithoutTime . ' ' . $appointment->start_at . ' - ' . $appointment->end_at;
@@ -25,8 +25,8 @@ trait MailTrait
 
         Mail::send('emails.info', $applicant->toArray(), function ($message) use ($appointment, $invoiceNumber) {
             $message->to([$appointment->applicant->email])
-                    ->subject('Sikeres online időpontfoglalás és fizetés')
-                    ->attach(storage_path('app/szamlaagent/pdf/' . $invoiceNumber . '.pdf'));
+                    ->subject('Sikeres online időpontfoglalás és fizetés');
+            // ->attach(storage_path('app/szamlaagent/pdf/' . $invoiceNumber . '.pdf'));
         });
     }
 }

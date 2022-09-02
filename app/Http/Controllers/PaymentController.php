@@ -149,9 +149,10 @@ class PaymentController extends Controller
 
             $appointment = $payment->paymentable;
 
-            $invoiceNumber = $this->createInvoice($payment);
+            // $invoiceNumber = $this->createInvoice($payment);
 
-            $this->sendMessages($appointment, $appointment->applicant, $invoiceNumber);
+            // $this->sendMessages($appointment, $appointment->applicant, $invoiceNumber);
+            $this->sendMessages($appointment, $appointment->applicant);
 
             return redirect()->route('payments.greeting', $appointment->id);
         } else {
