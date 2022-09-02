@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Payment extends Model
 {
-    use HasFactory; use SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +17,11 @@ class Payment extends Model
      * @var array
      */
     protected $fillable = ['status', 'paymentable', 'transaction_id', 'order_ref'];
+
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class, 'paymentable_id');
+    }
 
     public function paymentable()
     {

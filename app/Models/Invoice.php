@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Invoice extends Model
 {
-    use HasFactory; use SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
-    protected $fillable = ['invoice_number'];
+    protected $fillable = ['payment_id', 'invoice_number'];
 
-    public function ticket()
+    public function payment()
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsTo(Payment::class);
     }
 }

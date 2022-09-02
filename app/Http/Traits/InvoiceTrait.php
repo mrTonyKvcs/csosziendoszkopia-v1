@@ -8,47 +8,47 @@ use SzamlaAgent\Buyer;
 use SzamlaAgent\Document\Invoice\Invoice;
 use SzamlaAgent\Item\InvoiceItem;
 use Illuminate\Support\Str;
+use SzamlaAgent\Document\Invoice\PrePaymentInvoice;
+use SzamlaAgent\Header\InvoiceHeader;
+use SzamlaAgent\Header\PrePaymentInvoiceHeader;
 
 trait InvoiceTrait
 {
-    public function createInvoiceModel($invoiceNumber)
+    public function createInvoiceModel($paymentId, $invoiceNumber)
     {
         return InvoiceModel::create([
-            'slug' => Str::slug($invoiceNumber),
+            'payment_id' => $paymentId,
             'invoice_number' => $invoiceNumber
         ]);
     }
 
     public function createInvoice($data)
     {
-        $applicant = $data->applicant;
-        $medicalExamination = $data->medicalExamination->name;
-        dd($applicant);
-        $apiKey = config('site.szamlazzhu.KEY');
-        $price = config('site.szamlazzhu.PRICE');
-        $priceWithoutTax = $price / 1.27;
-        $tax = $data['price'] - $priceWithoutTax;
+        $applicant = $data->appointment->applicant;
 
+        $medicalExamination = $data->appointment->medicalExamination->name;
+        $apiKey = config('site.szamlazzhu.KEY');
+        $price = intval(config('site.szamlazzhu.PRICE'));
+        $priceWithoutTax = $price / 1.27;
+        $tax = $price - $priceWithoutTax;
         $agent = SzamlaAgentAPI::create($apiKey);
-        // tony's api key
-        // $agent = SzamlaAgentAPI::create('jhghwq8mypzhzjjefqcfwwmhqv4sfbyazafyexbpad');
-        /**
-         * Új papír alapú számla létrehozása
-         *
-         * Átutalással fizetendő magyar nyelvű (Ft) számla kiállítása mai keltezési és
-         * teljesítési dátummal, +8 nap fizetési határidővel.
-         */
-        $invoice = new Invoice(Invoice::INVOICE_TYPE_E_INVOICE);
+
+        $invoice = new PrePaymentInvoice(Invoice::INVOICE_TYPE_E_INVOICE);
+
         // Vevő adatainak hozzáadása (kötelezően kitöltendő adatokkal)
-        $invoice->setBuyer(new Buyer($applicant->name, $applicant->zip, $applicant->city, $applicant->street . ' ' . $applicant->house_number));
+        $invoice->setBuyer(new Buyer($applicant->name, strval($applicant->zip), $applicant->city, $applicant->street . ' ' . $applicant->house_number));
         // Számla tétel összeállítása alapértelmezett adatokkal (1 db tétel 27%-os ÁFA tartalommal)
         $item = new InvoiceItem($medicalExamination, $price);
         // Tétel nettó értéke
-        $item->setNetPrice($priceWithoutTax);
+        $item->setNetPrice($price);
         // Tétel ÁFA értéke
-        $item->setVatAmount($tax);
+        $item->setVat('TAM');
+        $item->setVatAmount(0.0);
+
         // Tétel bruttó értéke
         $item->setGrossAmount($price);
+
+        $item->setComment('ÁFA mentes az ÁFA tv. 85§ (1) bek.c. pont alapján');
         // Tétel hozzáadása a számlához
         $invoice->addItem($item);
 
@@ -59,6 +59,7 @@ trait InvoiceTrait
             // echo 'A számla sikeresen elkészült. Számlaszám: ' . $result->getDocumentNumber();
             // Válasz adatai a további feldolgozáshoz
             // var_dump($result->getDataObj());
+            $this->createInvoiceModel($data->id, $result->getDocumentNumber());
             return $result->getDocumentNumber();
         }
     }

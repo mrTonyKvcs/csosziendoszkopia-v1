@@ -105,7 +105,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 12000,
+                'price' => 15000,
             ]
         ]
     ],
