@@ -25,8 +25,8 @@ trait MailTrait
 
         Mail::send('emails.info', $applicant->toArray(), function ($message) use ($appointment, $invoiceNumber) {
             $message->to([$appointment->applicant->email])
-                    ->subject('Sikeres online időpontfoglalás és fizetés');
-            // ->attach(storage_path('app/szamlaagent/pdf/' . $invoiceNumber . '.pdf'));
+                    ->subject('Sikeres online időpontfoglalás és fizetés')
+                    ->attach(storage_path('app/szamlaagent/pdf/' . $invoiceNumber . '.pdf'));
         });
     }
 }

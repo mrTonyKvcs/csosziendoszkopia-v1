@@ -31,14 +31,14 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "SzamlaAgent\\": "szamlaagent/",
+            "SimplePay\\": "simplepay/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/",
-            "SzamlaAgent\\": "szamlaagent/src/",
-            "SimplePay\\": "simplepay/src/"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
