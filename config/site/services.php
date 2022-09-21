@@ -48,11 +48,11 @@ return [
         'icon' => 'endoscopic.svg',
         'prices' => [
             [
-                'text'  => 'Első alkalom',
+                'text'  => 'polip',
                 'price' => 19000,
             ],
             [
-                'text'  => 'További alkalmak',
+                'text'  => 'További polip eltávolítás',
                 'price' => 12000,
             ]
         ]

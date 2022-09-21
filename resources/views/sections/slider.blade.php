@@ -24,8 +24,7 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="text">
-                            <h1>Foglaljon időpontot <span>online konzultációra<span>!</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl pellentesque, faucibus libero eu, gravida quam. </p>
+                            <h1>Foglaljon időpontot <span>online<span>!</h1>
                             <div class="button">
                                 <a href="{{ route('appointments.index') }}" class="btn">Időpont foglalás</a>
                                 <a href="/#footer" class="btn primary">Kapcsolat</a>
