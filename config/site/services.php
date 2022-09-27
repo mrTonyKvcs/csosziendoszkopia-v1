@@ -61,7 +61,7 @@ return [
         'section' => true,
         'route' => null,
         'name' => 'Konzultáció',
-        'description' => 'A konzultáció időtartama körülbelül 15 perc. A tükrözéses vizsgálatok az orvossal történő konzultációt követően, előre megbeszélt  időpontban, megfelelő előkészítés után történnek.',
+        'description' => 'A konzultáció időtartama körülbelül 15 - 30 perc.',
         'icon' => 'consultation.svg',
         'prices' => [
             [

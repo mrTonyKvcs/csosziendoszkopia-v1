@@ -21,7 +21,7 @@ return [
         'Endoszkópos polypeltávolítás 3 polyp' => '43 000Ft/db'
     ],
     'konzultacio' => [
-        'text' => 'A konzultáció időtartama körülbelül 15 perc. A tükrözéses vizsgálatok az orvossal történő konzultációt követően, előre megbeszélt  időpontban, megfelelő előkészítés után történnek.',
+        'text' => 'A konzultáció időtartama körülbelül 15 - 30 perc',
         'Konzultáció' => '24 000Ft',
         'Kontroll konzultáció (3 hónapon belül)' => '15 000Ft',
         'Szövettani megbeszélés' => '6 000Ft'
