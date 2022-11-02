@@ -49,7 +49,7 @@
                 </li>
                 @endif
             @empty
-                <p>A kiválasztott orvoshoz nincs szabad időpont</p>
+                <p class="p-2 text-base">A kiválasztott orvoshoz nincs szabad időpont!</p>
             @endforelse
         </ul>
     </div>
