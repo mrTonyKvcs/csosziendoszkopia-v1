@@ -25,7 +25,7 @@
             aria-labelledby="listbox-label"
             aria-activedescendant="listbox-option-3"
             >
-			@foreach($this->appointments as $key => $time)
+			@forelse($this->appointments as $key => $time)
                 <li
 						wire:click="setActiveAppointment({{ $key }})"
                     class="relative py-2 pl-3 text-gray-900 cursor-default select-none pr-9" id="listbox-option-0" role="option">
@@ -44,7 +44,9 @@
                     @endif
                 @endempty
                 </li>
-            @endforeach
+            @empty
+                <p>A kiválasztott orvoshoz nincs szabad időpont</p>
+            @endforelse
         </ul>
     </div>
     @error($this->appointment) <span class="text-red-400 error">{{ $message }}</span> @enderror

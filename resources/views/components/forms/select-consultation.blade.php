@@ -25,7 +25,7 @@
             aria-labelledby="listbox-label"
             aria-activedescendant="listbox-option-3"
             >
-            @foreach($this->consultations as $consultation)
+            @forelse($this->consultations as $consultation)
 
                 @if ($this->checkType($consultation))
                     
@@ -48,7 +48,9 @@
                 @endempty
                 </li>
                 @endif
-            @endforeach
+            @empty
+                <p>A kiválasztott orvoshoz nincs szabad időpont</p>
+            @endforelse
         </ul>
     </div>
     @error($this->consultation) <span class="text-red-400 error">{{ $message }}</span> @enderror
