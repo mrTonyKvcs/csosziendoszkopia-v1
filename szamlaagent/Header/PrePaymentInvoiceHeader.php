@@ -17,8 +17,11 @@ class PrePaymentInvoiceHeader extends InvoiceHeader {
      * @throws \SzamlaAgent\SzamlaAgentException
      */
     function __construct($type = Invoice::INVOICE_TYPE_P_INVOICE) {
-        parent::__construct($type);
+	parent::__construct($type);
+        $this->setPrefix('END');
         $this->setPrePayment(true);
-        $this->setPaid(false);
+        $this->setPaymentMethod('bankkártya');
+        $this->setPaymentDue(now()->format('Y-m-d'));
+        $this->setPaid(true);
     }
 }
