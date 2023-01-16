@@ -17,8 +17,8 @@ return [
         'Bódítás' => '15 000Ft',
         'Szövettani mintavétel' => '15 000Ft/minta',
         'Endoszkópos polypeltávolítás 1 polyp' => '19 000Ft',
-        'Endoszkópos polypeltávolítás 2 polyp' => '31 000Ft/db',
-        'Endoszkópos polypeltávolítás 3 polyp' => '43 000Ft/db'
+        'Endoszkópos polypeltávolítás 2 polyp' => '31 000Ft/polip',
+        'Endoszkópos polypeltávolítás 3 polyp' => '43 000Ft/polip'
     ],
     'konzultacio' => [
         'text' => 'A konzultáció időtartama körülbelül 15 - 30 perc',
