@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'accepted' => 'The :attribute must be accepted.',
+    'accepted' => 'Általános Szerződési Feltételek elfogadása kötelező.',
     'active_url' => 'The :attribute is not a valid URL.',
     'after' => 'The :attribute must be a date after :date.',
     'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
@@ -85,7 +85,7 @@ return [
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => 'A :attribute legalább :min karakterből kell állnia.',
         'file' => 'The :attribute must be at least :min kilobytes.',
         'string' => 'The :attribute must be at least :min characters.',
         'array' => 'The :attribute must have at least :min items.',
@@ -134,8 +134,21 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'min' => 'A :attribute mezőnek legalább :min karakterből kell állnia.'
+        ],
+        'email' => [
+            'email' => 'Az :attribute mezőnek érvényes e-mail címnek kell lennie.'
+        ],
+        'phone' => [
+            'min' => 'A :attribute mezőnek legalább :min karakterből kell állnia.'
+        ],
+        'socialSecurityNumber' => [
+            'numeric' => 'A Taj-szám mezőnek számnak kell lennie.'
+        ],
+        'zip' => [
+            'numeric' => 'A :attribute mezőnek számnak kell lennie.',
+            'min' => 'A :attribute mezőnek legalább :min karakterből kell állnia.'
         ],
     ],
 

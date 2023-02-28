@@ -55,9 +55,14 @@ class Appointments extends Component
         'email' => 'required|email',
         'phone' => 'required|min:10',
         'socialSecurityNumber' => 'required|numeric',
-        'zip' => 'required|numeric',
+        'zip' => 'required|numeric|min:4',
         'city' => 'required',
         'street' => 'required',
+        'medicalExamination' => 'required',
+        'doctor' => 'required',
+        'consultation' => 'required',
+        'appointment' => 'required',
+        'gdpr' => 'accepted',
     ];
 
     public function mount()

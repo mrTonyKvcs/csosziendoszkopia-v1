@@ -15,7 +15,7 @@
 	@endif
     <div class="grid grid-cols-6 gap-6 px-4 py-5 border-t border-gray-200 sm:p-0">
 
-            <div class="col-span-6 sm:col-span-2">
+            <div class="flex flex-col col-span-6 sm:col-span-2">
 				<small class="text-lg">Név</small>
                 <input type="text" wire:model="name" id="name" autocomplete="given-name" class="block w-full p-2 mt-1 text-lg border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 				<small>Példa: Teszt Elek</small>
@@ -23,7 +23,7 @@
             </div>
 
 			{{-- @if(!$admin) --}}
-				<div class="col-span-6 sm:col-span-2">
+				<div class="flex flex-col col-span-6 sm:col-span-2">
 					<small class="text-lg">Email</small>
 					<input type="text" wire:model="email" id="email_address" autocomplete="email" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					<small>Példa: pelda@gmail.com</small>
@@ -31,33 +31,33 @@
 				</div>
 			{{-- @endif --}}
 
-            <div class="col-span-6 sm:col-span-2">
+            <div class="flex flex-col col-span-6 sm:col-span-2">
 				<small class="text-lg">Telefonszám</small>
                 <input type="text" name="phone" wire:model="phone" id="phone" autocomplete="phone" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 				<small>Példa: +36708880011</small>
                 @error('phone') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-				<div class="col-span-6 sm:col-span-2">
+				<div class="flex flex-col col-span-6 sm:col-span-2">
 					<small class="text-lg">Taj-szám</small>
 					<input type="text" name="socialSecurityNumber" wire:model="socialSecurityNumber" id="social_security_number" autocomplete="social_security_number" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					<small>Példa: 115652436</small>
 					@error('socialSecurityNumber') <span class="error">{{ $message }}</span> @enderror
 				</div>
 			@if(!$admin)
-				<div class="col-span-6 sm:col-span-2">
+				<div class="flex flex-col col-span-6 sm:col-span-2">
 					<small class="text-lg">Irányítószám</small>
 					<input type="text" name="zip" wire:model="zip" id="zip" autocomplete="zip" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					<small>Példa: 6000</small>
 					@error('zip') <span class="error">{{ $message }}</span> @enderror
 				</div>
-				<div class="col-span-6 sm:col-span-2">
+				<div class="flex flex-col col-span-6 sm:col-span-2">
 					<small class="text-lg">Város</small>
 					<input type="text" name="city" wire:model="city" id="city" autocomplete="city" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					<small>Példa: Kecskemét</small>
 					@error('city') <span class="error">{{ $message }}</span> @enderror
 				</div>
-				<div class="col-span-6 sm:col-span-2">
+				<div class="flex flex-col col-span-6 sm:col-span-2">
 					<small class="text-lg">Utca és házszám</small>
 					<input type="text" name="street" wire:model="street" id="street" autocomplete="street" class="block w-full p-2 mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg" placeholder="">
 					<small>Példa: Példa utca 7.</small>
@@ -66,22 +66,24 @@
 			@endif
         </div>
 	@if(!$admin)
-		<div class="flex items-start py-4 mt-1 sm:py-5 sm:px-6">
+		<div class="flex items-start pt-4 mt-1 mb-1 sm:pt-5 sm:px-6">
 			<div class="flex items-center h-6 mt-1">
 				<input id="comments" wire:model="gdpr" name="gdpr" type="checkbox"
-					class="text-gray-600 border-gray-300 rounded w-7 h-7 focus:ring-gray-500">
+					class="text-gray-600 border-gray-300 rounded w-7 h-7 focus:ring-gray-500" required>
 			</div>
-				<div>
-					<div class="ml-3 text-md">
-						<label for="comments" class="font-medium text-gray-700">Elfogadom a feltételeket</label>
-						<p class="text-gray-500">A "Jegyvásárlás" gomb megnyomásával Ön elfogadja az <a href="/pdfs/aszf.pdf"
-								class="text-gold" target="_blank">Általános Szerződési Feltételeket, az Adatkezelési
-								Szabályzatot</a>, a 45/2014. (II. 26) Korm. rendelet 15. §-a szerinti tájékoztatást, <a
-								href="/pdfs/adattovabbitasi-nyilatkozat.pdf" class="text-gold" target="_blank">Adattovábbítási
-								nyilatkozatot</a> valamint kijelenti, hogy elmúlt 18 éves. </p>
-					</div>
-					@error('gdpr') <span class="error">{{ $message }}</span> @enderror
+			<div>
+				<div class="ml-3 text-md">
+					<label for="comments" class="font-medium text-gray-700">Elfogadom a feltételeket</label>
+					<p class="text-gray-500">A "Jegyvásárlás" gomb megnyomásával Ön elfogadja az <a href="/pdfs/aszf.pdf"
+							class="text-gold" target="_blank">Általános Szerződési Feltételeket, az Adatkezelési
+							Szabályzatot</a>, a 45/2014. (II. 26) Korm. rendelet 15. §-a szerinti tájékoztatást, <a
+							href="/pdfs/adattovabbitasi-nyilatkozat.pdf" class="text-gold" target="_blank">Adattovábbítási
+							nyilatkozatot</a> valamint kijelenti, hogy elmúlt 18 éves. </p>
 				</div>
+			</div>
+		</div>
+		<div class="mt-1 mb-4 sm:px-6">
+			@error('gdpr') <span class="error">{{ $message }}</span> @enderror
 		</div>
 		
 	@endif

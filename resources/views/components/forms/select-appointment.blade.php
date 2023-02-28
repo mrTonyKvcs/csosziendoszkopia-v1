@@ -49,5 +49,5 @@
             @endforelse
         </ul>
     </div>
-    @error($this->appointment) <span class="text-red-400 error">{{ $message }}</span> @enderror
+    @error('appointment') <span class="text-red-400 error">{{ $message }}</span> @enderror
 </div>

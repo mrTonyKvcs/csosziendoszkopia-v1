@@ -47,7 +47,7 @@
             @endforeach
         </ul>
     </div>
-    @error($this->medicalExamination) <span class="text-red-400 error">{{ $message }}</span> @enderror
+    @error('medicalExamination') <span class="text-red-400 error">{{ $message }}</span> @enderror
     @empty(!$this->info)
         <div class="mt-5 text-lg">
             <p class="mb-2">{{ $this->info['text'] }}</p>
