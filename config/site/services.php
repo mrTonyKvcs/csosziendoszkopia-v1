@@ -10,7 +10,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 55000,
+                'price' => 60000,
             ]
         ]
     ],
@@ -23,7 +23,7 @@ return [
         'prices' => [
             [
                 'text'  => null,
-                'price' => 70000,
+                'price' => 75000,
             ]
         ]
     ],

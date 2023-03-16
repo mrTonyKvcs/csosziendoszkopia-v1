@@ -4,7 +4,7 @@
 return [
     'gasztroszkopia' => [
         'text' => 'Nyelőcső, gyomor, nyombél endoszkópos vizsgálata, melynek során helyi érzéstelenítés mellett tudjuk vizsgálni a fenti szerveket. Leggyakrabban fekély, refluxbetegség, vérszegénység okának kutatása vagy lisztérzékenység gyanúja, Helicobacter fertőzés gyanúja esetén javasolt.',
-        'Gyomortükrözés (gasztroszkópia)' => '55 000Ft',
+        'Gyomortükrözés (gasztroszkópia)' => '60 000Ft',
         'Bódítás' => '15 000Ft',
         'Szövettani mintavétel' => '15 000Ft/minta',
         // 'Endoszkópos polypeltávolítás 1 polyp' => '17 000Ft',
@@ -13,7 +13,7 @@ return [
     ],
     'colonoscopia' => [
         'text' => 'A vastag és végbél endoszkópos vizsgálata, melynek során feltérképezhető a bél gyulladása, jó vagy rosszindulatú daganatos elváltozásai, rákelőző állapotok. A vastagbélrák szűrésére a legalkalmasabb módszer, melynek során lehetőség van biopsziára vagy a kisebb elváltozások eltávolítására.',
-        'Vastagbéltükrözés (kolonoszkópia)' => '70 000Ft',
+        'Vastagbéltükrözés (kolonoszkópia)' => '75 000Ft',
         'Bódítás' => '15 000Ft',
         'Szövettani mintavétel' => '15 000Ft/minta',
         'Endoszkópos polypeltávolítás 1 polyp' => '19 000Ft',
