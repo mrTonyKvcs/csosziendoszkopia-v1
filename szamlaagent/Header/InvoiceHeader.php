@@ -228,7 +228,7 @@ class InvoiceHeader extends DocumentHeader
         if (!empty($type)) {
             $this->setDefaultData($type);
         }
-        $this->setPrePayment(true);
+        $this->setPrePayment(false);
         $this->setPaymentMethod('bankkártya');
         $this->setPaymentDue(now()->format('Y-m-d'));
         $this->setPaid(true);

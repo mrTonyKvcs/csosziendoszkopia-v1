@@ -33,12 +33,12 @@ trait InvoiceTrait
         $tax = $price - $priceWithoutTax;
         $agent = SzamlaAgentAPI::create($apiKey);
 
-        $invoice = new PrePaymentInvoice(Invoice::INVOICE_TYPE_E_INVOICE);
+        $invoice = new Invoice(Invoice::INVOICE_TYPE_E_INVOICE);
 
         // Vevő adatainak hozzáadása (kötelezően kitöltendő adatokkal)
         $invoice->setBuyer(new Buyer($applicant->name, strval($applicant->zip), $applicant->city, $applicant->street . ' ' . $applicant->house_number));
         // Számla tétel összeállítása alapértelmezett adatokkal (1 db tétel 27%-os ÁFA tartalommal)
-        $item = new InvoiceItem($medicalExamination, $price);
+        $item = new InvoiceItem('Regisztrációs d', $price);
         // Tétel nettó értéke
         $item->setNetPrice($price);
         // Tétel ÁFA értéke
